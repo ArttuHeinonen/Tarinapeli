@@ -4,23 +4,41 @@ using System.Collections;
 
 public class Score : MonoBehaviour {
 
+    public static Score Instance { get; private set; }
+
     public Text scoreText;
-    public int scoreValue;
+    public int scoreValue = 1;
     private int score = 0;
 
 	void Start () {
+        Instance = this;
         score = 0;
-        UpdateScoreText();
 	}
 
-    void OnTriggerEnter2D()
+    void OnCollisionEnter2D(Collision2D other)
     {
-        score += scoreValue;
+        if(other.gameObject.tag == "Melon")
+        {
+            score += scoreValue;
+        }
+        else
+        {
+            score -= scoreValue;
+            preventNegativeScore();
+        }
         UpdateScoreText();
     }
 
-    void UpdateScoreText()
+    public void UpdateScoreText()
     {
         scoreText.text = "Score: " + score;
+    }
+
+    private void preventNegativeScore()
+    {
+        if(score < 0)
+        {
+            score = 0;
+        }
     }
 }
