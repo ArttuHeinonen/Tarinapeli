@@ -8,15 +8,16 @@ public class Score : MonoBehaviour {
 
     public Text scoreText;
     public int scoreValue = 1;
-    private int score = 0;
+    public int score = 0;
 
 	void Start () {
         Instance = this;
         score = 0;
-	}
+    }
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        
         if(other.gameObject.tag == "Melon")
         {
             score += scoreValue;
@@ -27,6 +28,11 @@ public class Score : MonoBehaviour {
             preventNegativeScore();
         }
         UpdateScoreText();
+    }
+
+    public void HideScoreText()
+    {
+        scoreText.text = "";
     }
 
     public void UpdateScoreText()

@@ -6,17 +6,18 @@ public class GameController : MonoBehaviour {
 
     public static GameController Instance { get; private set; }
 
+    public enum GameState { title, playing, cutScene, animation, gameover};
+    private GameState gameState;
+
     public Camera cam;
     public GameObject[] pickups;
     public GameObject gameOverText;
     public GameObject resetButton;
     public GameObject titleScreen;
-    public GameObject startButton;
     public Text timerText;
+    public Text scoreText;
     public PlayerController playerController;
-    private bool playing;
-    private bool inCutscene;
-    private bool isAnimationPlaying;
+    public DialogueController dialogController;
 
     public float timeLeft = 10;
     public float minSpawnTime, maxSpawnTime;
@@ -29,39 +30,49 @@ public class GameController : MonoBehaviour {
         {
             cam = Camera.main;
         }
-        playing = false;
-        inCutscene = false;
-        isAnimationPlaying = false;
         Vector3 upperCorner = new Vector3(Screen.width, Screen.height, 0f);
         Vector3 targetWidth = cam.ScreenToWorldPoint(upperCorner);
         float melonWidth = pickups[0].GetComponent<Renderer>().bounds.extents.x;
         maxWidth = targetWidth.x - melonWidth;
-    }
-
-    public void StartGame()
-    {
-        titleScreen.SetActive(false);
-        startButton.SetActive(false);
-        playerController.ToggleControl(true);
-        Score.Instance.UpdateScoreText();
-        StartCoroutine(Spawn());
+        GotoTitleScreen();
     }
 
     public void StartCutScene()
     {
         titleScreen.SetActive(false);
-        startButton.SetActive(false);
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        if (playing)
+        switch (gameState)
         {
-            UpdatePlaying();
+            case GameState.title:
+                UpdateTitle();
+                break;
+            case GameState.playing:
+                UpdatePlaying();
+                break;
+            case GameState.cutScene:
+                UpdateCutScene();
+                break;
+            case GameState.animation:
+                UpdateAnimation();
+                break;
+            case GameState.gameover:
+                GameOver();
+                break;
+            default:
+                break;
         }
-        else
+    }
+
+    private void UpdateTitle()
+    {
+        if (Input.GetMouseButtonDown(0))
         {
-            UpdateCutScene();
+            titleScreen.SetActive(false);
+            dialogController.ShowCurrentLine();
+            gameState = GameState.cutScene;
         }
     }
 
@@ -77,17 +88,40 @@ public class GameController : MonoBehaviour {
 
     private void UpdateCutScene()
     {
-        if (isAnimationPlaying)
+        if (Input.GetMouseButtonDown(0))
         {
-            //Play animation
-        }
-        else
-        {
-            if (Input.GetMouseButtonDown(0))
+            dialogController.ShowNextLine();
+            if (dialogController.isFinished)
             {
-                //Display next text/animation
+                GotoPlaymode();
             }
         }
+        
+    }
+
+    private void UpdateAnimation()
+    {
+
+    }
+
+    private void GotoTitleScreen()
+    {
+        gameState = GameState.title;
+        titleScreen.SetActive(true);
+        gameOverText.SetActive(false);
+        timerText.text = "";
+        dialogController.HideDialog();
+        scoreText.text = "";
+        playerController.ToggleControl(false);
+    }
+
+    private void GotoPlaymode()
+    {
+        gameState = GameState.playing;
+        titleScreen.SetActive(false);
+        playerController.ToggleControl(true);
+        Score.Instance.UpdateScoreText();
+        StartCoroutine(Spawn());
     }
 
     private void UpdateTimerText()
@@ -97,7 +131,6 @@ public class GameController : MonoBehaviour {
 
     IEnumerator Spawn()
     {
-        playing = true;
         yield return new WaitForSeconds(1f);
         while(timeLeft > 0){
             GameObject pickup = pickups[Random.Range(0, pickups.Length)];
