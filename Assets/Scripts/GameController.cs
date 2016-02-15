@@ -16,7 +16,6 @@ public class GameController : MonoBehaviour {
     public GameObject titleScreen;
     public Text timerText;
     public Text scoreText;
-    public PlayerController playerController;
     public DialogueController dialogController;
 
     public float timeLeft = 10;
@@ -90,13 +89,17 @@ public class GameController : MonoBehaviour {
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if(dialogController.currentLine == 2)
+            {
+                PlayerController.Instance.AnimateSearch();
+            }
+
             dialogController.ShowNextLine();
             if (dialogController.isFinished)
             {
                 GotoPlaymode();
             }
         }
-        
     }
 
     private void UpdateAnimation()
@@ -112,21 +115,21 @@ public class GameController : MonoBehaviour {
         timerText.text = "";
         dialogController.HideDialog();
         scoreText.text = "";
-        playerController.ToggleControl(false);
+        PlayerController.Instance.ToggleControl(false);
     }
 
     private void GotoPlaymode()
     {
         gameState = GameState.playing;
         titleScreen.SetActive(false);
-        playerController.ToggleControl(true);
+        PlayerController.Instance.ToggleControl(true);
         Score.Instance.UpdateScoreText();
         StartCoroutine(Spawn());
     }
 
     private void UpdateTimerText()
     {
-        timerText.text = "Time left: " + Mathf.RoundToInt(timeLeft);
+        timerText.text = "Aikaa: " + Mathf.RoundToInt(timeLeft);
     }
 
     IEnumerator Spawn()
@@ -146,6 +149,6 @@ public class GameController : MonoBehaviour {
     {
         gameOverText.SetActive(true);
         resetButton.SetActive(true);
-        playerController.ToggleControl(false);
+        PlayerController.Instance.ToggleControl(false);
     }
 }

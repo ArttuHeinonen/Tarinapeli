@@ -15,17 +15,18 @@ public class Score : MonoBehaviour {
         score = 0;
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        
         if(other.gameObject.tag == "Melon")
         {
             score += scoreValue;
+            EatPickup(other);
         }
-        else
+        else if(other.gameObject.tag == "IceCream")
         {
             score -= scoreValue;
-            preventNegativeScore();
+            PreventNegativeScore();
+            EatPickup(other);
         }
         UpdateScoreText();
     }
@@ -37,14 +38,20 @@ public class Score : MonoBehaviour {
 
     public void UpdateScoreText()
     {
-        scoreText.text = "Score: " + score;
+        scoreText.text = "Pisteet: " + score;
     }
 
-    private void preventNegativeScore()
+    void PreventNegativeScore()
     {
         if(score < 0)
         {
             score = 0;
         }
+    }
+
+    void EatPickup(Collider2D other)
+    {
+        PlayerController.Instance.AnimateEating();
+        Destroy(other.gameObject);
     }
 }
