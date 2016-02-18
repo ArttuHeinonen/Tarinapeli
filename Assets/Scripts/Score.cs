@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Score : MonoBehaviour {
 
@@ -10,19 +10,20 @@ public class Score : MonoBehaviour {
     public int scoreValue = 1;
     public int score = 0;
 
-	void Start () {
+    void Start()
+    {
         Instance = this;
         score = 0;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Melon")
+        if (other.gameObject.tag == "Melon")
         {
             score += scoreValue;
             EatPickup(other);
         }
-        else if(other.gameObject.tag == "IceCream")
+        else if (other.gameObject.tag == "IceCream")
         {
             score -= scoreValue;
             PreventNegativeScore();
@@ -38,12 +39,12 @@ public class Score : MonoBehaviour {
 
     public void UpdateScoreText()
     {
-        scoreText.text = "Pisteet: " + score;
+        scoreText.text = score.ToString();
     }
 
     void PreventNegativeScore()
     {
-        if(score < 0)
+        if (score < 0)
         {
             score = 0;
         }

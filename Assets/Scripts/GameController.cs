@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
@@ -13,6 +14,8 @@ public class GameController : MonoBehaviour {
     public GameObject[] pickups;
     public GameObject gameOverText;
     public GameObject resetButton;
+    public GameObject homeButton;
+    public GameObject nextButton;
     public GameObject titleScreen;
     public Text timerText;
     public Text scoreText;
@@ -116,6 +119,8 @@ public class GameController : MonoBehaviour {
         dialogController.HideDialog();
         scoreText.text = "";
         PlayerController.Instance.ToggleControl(false);
+        HideGameOver();
+        
     }
 
     private void GotoPlaymode()
@@ -125,6 +130,14 @@ public class GameController : MonoBehaviour {
         PlayerController.Instance.ToggleControl(true);
         Score.Instance.UpdateScoreText();
         StartCoroutine(Spawn());
+    }
+
+    private void HideGameOver()
+    {
+        gameOverText.SetActive(false);
+        resetButton.SetActive(false);
+        homeButton.SetActive(false);
+        nextButton.SetActive(false);
     }
 
     private void UpdateTimerText()
