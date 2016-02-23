@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DialogueController : MonoBehaviour {
 
     public Text text;
+    public GameObject textPanel;
 
     public TextAsset textFile;
     public string[] dialogs;
@@ -13,7 +14,6 @@ public class DialogueController : MonoBehaviour {
     public int lastLine;
     public bool isFinished;
 
-	// Use this for initialization
 	void Start () {
         FillDialogs();
         isFinished = false;
@@ -26,11 +26,13 @@ public class DialogueController : MonoBehaviour {
     public void HideDialog()
     {
         text.text = "";
+        textPanel.SetActive(false);
     }
 
     public void ShowCurrentLine()
     {
         text.text = dialogs[currentLine];
+        textPanel.SetActive(true);
     }
 
     public void ShowNextLine()
@@ -45,7 +47,21 @@ public class DialogueController : MonoBehaviour {
             currentLine++;
             ShowCurrentLine();
         }
-        
+        textPanel.SetActive(true);
+    }
+
+    public void MoveToNextLine()
+    {
+        if (currentLine >= lastLine)
+        {
+            HideDialog();
+            isFinished = true;
+        }
+        else
+        {
+            currentLine++;
+        }
+        textPanel.SetActive(true);
     }
 
     private void FillDialogs()

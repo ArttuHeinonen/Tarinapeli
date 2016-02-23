@@ -10,10 +10,13 @@ public class Score : MonoBehaviour {
     public int scoreValue = 1;
     public int score = 0;
 
+    private Animator anim;
+
     void Start()
     {
         Instance = this;
         score = 0;
+        anim = GetComponentInChildren<Animator>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -52,7 +55,11 @@ public class Score : MonoBehaviour {
 
     void EatPickup(Collider2D other)
     {
-        PlayerController.Instance.AnimateEating();
+        if (other.gameObject.CompareTag("Melon"))
+        {
+            anim.SetTrigger("Eat");
+        }
+        
         Destroy(other.gameObject);
     }
 }

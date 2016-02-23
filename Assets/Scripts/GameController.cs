@@ -7,19 +7,19 @@ public class GameController : MonoBehaviour {
 
     public static GameController Instance { get; private set; }
 
-    public enum GameState { title, playing, cutScene, animation, gameover};
+    public enum GameState { title, playing, cutScene, gameover};
     private GameState gameState;
 
     public Camera cam;
     public GameObject[] pickups;
-    public GameObject gameOverText;
-    public GameObject resetButton;
-    public GameObject homeButton;
-    public GameObject nextButton;
-    public GameObject titleScreen;
+    public GameObject CanvasText;
+    public GameObject CanvasGame;
+    public GameObject CanvasEnd;
+    public GameObject title;
     public Text timerText;
     public Text scoreText;
     public DialogueController dialogController;
+    private bool waitForAnimation;
 
     public float timeLeft = 10;
     public float minSpawnTime, maxSpawnTime;
@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour {
         {
             cam = Camera.main;
         }
+        waitForAnimation = false;
         Vector3 upperCorner = new Vector3(Screen.width, Screen.height, 0f);
         Vector3 targetWidth = cam.ScreenToWorldPoint(upperCorner);
         float melonWidth = pickups[0].GetComponent<Renderer>().bounds.extents.x;
@@ -41,7 +42,7 @@ public class GameController : MonoBehaviour {
 
     public void StartCutScene()
     {
-        titleScreen.SetActive(false);
+        title.SetActive(false);
     }
 
     void Update()
@@ -57,9 +58,6 @@ public class GameController : MonoBehaviour {
             case GameState.cutScene:
                 UpdateCutScene();
                 break;
-            case GameState.animation:
-                UpdateAnimation();
-                break;
             case GameState.gameover:
                 GameOver();
                 break;
@@ -72,7 +70,7 @@ public class GameController : MonoBehaviour {
     {
         if (Input.GetMouseButtonDown(0))
         {
-            titleScreen.SetActive(false);
+            title.SetActive(false);
             dialogController.ShowCurrentLine();
             gameState = GameState.cutScene;
         }
@@ -90,54 +88,63 @@ public class GameController : MonoBehaviour {
 
     private void UpdateCutScene()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!waitForAnimation)
         {
-            if(dialogController.currentLine == 2)
+            if (Input.GetMouseButtonDown(0))
             {
-                PlayerController.Instance.AnimateSearch();
-            }
+                if(dialogController.currentLine == 1)
+                {
+                    OwlController.Instance.AnimateFly();
+                    waitForAnimation = true;
+                    dialogController.MoveToNextLine();
+                }
+                else if (dialogController.currentLine == 2)
+                {
+                    PlayerController.Instance.AnimateSearch();
+                    waitForAnimation = true;
+                    dialogController.MoveToNextLine();
+                }
+                else
+                {
+                    dialogController.ShowNextLine();
+                }
 
-            dialogController.ShowNextLine();
-            if (dialogController.isFinished)
-            {
-                GotoPlaymode();
+
+                if (dialogController.isFinished)
+                {
+                    GotoPlaymode();
+                }
             }
+            else
+            {
+                dialogController.ShowCurrentLine();
+            } 
         }
-    }
-
-    private void UpdateAnimation()
-    {
-
     }
 
     private void GotoTitleScreen()
     {
         gameState = GameState.title;
-        titleScreen.SetActive(true);
-        gameOverText.SetActive(false);
         timerText.text = "";
-        dialogController.HideDialog();
         scoreText.text = "";
         PlayerController.Instance.ToggleControl(false);
-        HideGameOver();
-        
+        dialogController.HideDialog();
+        title.SetActive(true);
+        CanvasText.SetActive(true);
+        CanvasGame.SetActive(false);
+        CanvasEnd.SetActive(false);
     }
 
     private void GotoPlaymode()
     {
         gameState = GameState.playing;
-        titleScreen.SetActive(false);
         PlayerController.Instance.ToggleControl(true);
         Score.Instance.UpdateScoreText();
         StartCoroutine(Spawn());
-    }
-
-    private void HideGameOver()
-    {
-        gameOverText.SetActive(false);
-        resetButton.SetActive(false);
-        homeButton.SetActive(false);
-        nextButton.SetActive(false);
+        title.SetActive(false);
+        CanvasText.SetActive(false);
+        CanvasEnd.SetActive(false);
+        CanvasGame.SetActive(true);
     }
 
     private void UpdateTimerText()
@@ -160,8 +167,14 @@ public class GameController : MonoBehaviour {
 
     public void GameOver()
     {
-        gameOverText.SetActive(true);
-        resetButton.SetActive(true);
+        CanvasEnd.SetActive(true);
+        CanvasGame.SetActive(false);
+        CanvasText.SetActive(false);
         PlayerController.Instance.ToggleControl(false);
+    }
+
+    public void ToggelWaitForAnimation(bool wait)
+    {
+        this.waitForAnimation = wait;
     }
 }
