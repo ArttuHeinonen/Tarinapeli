@@ -5,25 +5,40 @@ public class PlayerController : MonoBehaviour {
 
     public static PlayerController Instance { get; private set; }
 
-    public Camera cam;
+    private Camera cam;
     private float maxWidth;
-    private bool canControl;
+    private float maxHeigh;
+    private bool canControl = false;
+    private float controlCooldown = 0;
     private Animator anim;
+    private float jump = 10f;
+    public float jumpVelocity;
+    private float gravity = 0.2f;
 
-    void Start () {
+    public AudioClip swimAudio;
+    public AudioClip splashAudio;
+    private AudioSource audioSource;
+
+    void Awake()
+    {
         Instance = this;
+    }
+    void Start () {
+        
 	    if(cam == null)
         {
             cam = Camera.main;
         }
         canControl = false;
         Vector3 upperCorner = new Vector3(Screen.width, Screen.height, 0f);
-        Vector3 targetWidth = cam.ScreenToWorldPoint(upperCorner);
-        maxWidth = targetWidth.x;
+        Vector3 target = cam.ScreenToWorldPoint(upperCorner);
+        maxWidth = target.x;
+        maxHeigh = target.y;
         anim = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
-	void Update () {
+	public void MelonUpdate () {
         if (canControl)
         {
             Vector3 rawPosition = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -31,15 +46,134 @@ public class PlayerController : MonoBehaviour {
             float targetWidth = Mathf.Clamp(targetPosition.x, -maxWidth, maxWidth);
             transform.position = new Vector3(targetWidth, transform.position.y);
         }
+        else
+        {
+            ReduceCooldown();
+        }
 	}
+
+    public void UnderWaterUpdate()
+    {
+        if (canControl)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Animate("Swim");
+                PlaySwimAudio();
+                FreezeControls(0.25f);
+                jumpVelocity += jump;
+            }  
+        }
+        else
+        {
+            ReduceCooldown();
+        }
+        float targetHeight = Mathf.Clamp(transform.position.y + (jumpVelocity * Time.deltaTime), -maxHeigh, maxHeigh);
+        transform.position = new Vector3(transform.position.x, targetHeight);
+
+        if (transform.position.y == maxHeigh)
+        {
+            jumpVelocity = 0;
+        }
+
+        if (transform.position.y <= -2.5)
+        {
+            jumpVelocity = 0;
+            ResetPlayerYPosition();
+        }
+        else
+        {
+            jumpVelocity -= gravity;
+        }
+    }
+
+    void ReduceCooldown()
+    {
+        if (controlCooldown > 0)
+        {
+            controlCooldown -= Time.deltaTime;
+            if (controlCooldown <= 0)
+            {
+                canControl = true;
+            }
+        }
+    }
 
     public void ToggleControl(bool toggle)
     {
         canControl = toggle;
     }
 
-    public void AnimateSearch()
+    public void ChangeSpriteToHungry()
     {
-        anim.SetTrigger("Search");
+        ResetAnimationBools();
+        anim.SetBool("IsHungry", true);
+    }
+
+    public void ChangeSpriteToUnderWater()
+    {
+        ResetAnimationBools();
+        anim.SetBool("IsUnderwater", true);
+    }
+
+    public void ChangeSpriteToHappy()
+    {
+        ResetAnimationBools();
+        anim.SetBool("IsHappy", true);
+    }
+
+    public void ChangeSpriteToHug()
+    {
+        ResetAnimationBools();
+        anim.SetBool("Hug", true);
+    }
+
+    public void ChangespriteToDefault()
+    {
+        ResetAnimationBools();
+    }
+
+    void ResetAnimationBools()
+    {
+        anim.SetBool("IsHungry", false);
+        anim.SetBool("IsUnderwater", false);
+        anim.SetBool("IsHappy", false);
+        anim.SetBool("Hug", false);
+    }
+
+    public void FreezeControls(float cooldown)
+    {
+        ToggleControl(false);
+        this.controlCooldown = cooldown;
+    }
+
+    public void ResetPlayerPosition()
+    {
+        transform.position = new Vector3(0, -2.5f, 0);
+    }
+
+    public void ResetPlayerYPosition()
+    {
+        transform.position = new Vector3(transform.position.x, -2.5f);
+    }
+
+    public void PutPlayerNearBond()
+    {
+        transform.position = new Vector3(-maxWidth + 2, -2.5f, 0);
+    }
+
+    public void Animate(string animationName)
+    {
+        anim.SetTrigger(animationName);
+    }
+
+    public void PlaySwimAudio()
+    {
+        audioSource.PlayOneShot(swimAudio);
+    }
+
+    public void PlaySplashAudio()
+    {
+        audioSource.PlayOneShot(splashAudio);
     }
 }

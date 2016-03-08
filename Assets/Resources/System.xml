@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<languages>
+
+	<Finnish>
+		<string name="app_name">Tarinapeli</string>
+		<string name="melonBadEnd">Näl-kä!</string>
+		<string name="melonGoodEnd">Nam!</string>
+		<string name="melonGreatEnd">Nam!!</string>
+    <string name="underwaterBadEnd">Auts</string>
+		<string name="underwaterGoodEnd">Ys-tä-vä</string>
+	</Finnish>
+
+	<English>
+    <string name="app_name">Storygame</string>
+		<string name="melonBadEnd">Hungry!</string>
+		<string name="melonGoodEnd">Yummy!</string>
+    <string name="melonGreatEnd">Yummy!!</string>
+		<string name="underwaterBadEnd">Ouch</string>
+		<string name="underwaterGoodEnd">Friend</string>
+	</English>
+
+</languages>

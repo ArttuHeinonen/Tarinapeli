@@ -1,0 +1,167 @@
+fileFormatVersion: 2
+guid: 2acb9cef064ac1c45a3fe15670269fb0
+timeCreated: 1457039484
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: siivetjalat 01_0
+    21300002: siivetjalat 01_1
+    21300004: siivetjalat 01_2
+    21300006: siivetjalat 01_3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 1024
+    textureFormat: -1
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    sprites:
+    - name: siivetjalat 01_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 304
+        width: 189
+        height: 279
+      alignment: 9
+      pivot: {x: 0.94775784, y: 0.13050137}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -93.126236, y: 212.59012}
+        - {x: -142.12624, y: 242.59012}
+        - {x: -176.12624, y: 242.59012}
+        - {x: -179.12624, y: 232.59012}
+        - {x: -179.12624, y: 52.59012}
+        - {x: -131.12624, y: -35.40988}
+        - {x: -123.126236, y: -36.40988}
+        - {x: -7.126236, y: -36.40988}
+        - {x: -2.126236, y: -34.40988}
+        - {x: 9.873764, y: -12.409882}
+        - {x: 9.873764, y: 23.590118}
+    - name: siivetjalat 01_1
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 304
+        width: 208
+        height: 279
+      alignment: 9
+      pivot: {x: 0.04875887, y: 0.14704604}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 197.85815, y: 183.97415}
+        - {x: 192.85815, y: 237.97415}
+        - {x: 147.85815, y: 237.97415}
+        - {x: 133.85815, y: 228.97415}
+        - {x: -10.141846, y: 20.974152}
+        - {x: -10.141846, y: -34.02585}
+        - {x: -6.1418457, y: -41.02585}
+        - {x: 97.858154, y: -41.02585}
+        - {x: 167.85815, y: 15.974152}
+        - {x: 189.85815, y: 55.97415}
+        - {x: 197.85815, y: 70.97415}
+    - name: siivetjalat 01_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 263
+        height: 274
+      alignment: 9
+      pivot: {x: 0.9621827, y: 0.22483848}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -182.05405, y: 195.39426}
+        - {x: -215.05405, y: 212.39426}
+        - {x: -243.05405, y: 212.39426}
+        - {x: -243.05405, y: 25.394257}
+        - {x: -183.05405, y: -61.605743}
+        - {x: 4.9459534, y: -61.605743}
+        - {x: 9.945953, y: -24.605743}
+        - {x: 9.945953, y: 7.3942566}
+        - {x: -6.0540466, y: 19.394257}
+      - - {x: -253.05405, y: 212.39426}
+        - {x: -253.05405, y: 208.39426}
+        - {x: -250.05405, y: 208.39426}
+        - {x: -248.05405, y: 210.39426}
+        - {x: -249.05405, y: 212.39426}
+    - name: siivetjalat 01_3
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 0
+        width: 265
+        height: 285
+      alignment: 9
+      pivot: {x: 0.050014973, y: 0.21116404}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 251.74603, y: 91.81825}
+        - {x: 251.74603, y: 112.81825}
+        - {x: 189.74603, y: 113.81825}
+        - {x: 158.74603, y: 86.81825}
+        - {x: 238.74603, y: 216.81825}
+        - {x: 242.74603, y: 224.81825}
+        - {x: 145.74603, y: 224.81825}
+        - {x: -13.253967, y: 106.81825}
+        - {x: -13.253967, y: -57.181747}
+        - {x: -9.253967, y: -60.181747}
+        - {x: 97.74603, y: -60.181747}
+        - {x: 176.74603, y: -29.181747}
+        - {x: 179.74603, y: -20.181747}
+        - {x: 161.74603, y: -9.181747}
+        - {x: 142.74603, y: -2.1817474}
+      - - {x: 239.74603, y: 224.81825}
+        - {x: 239.74603, y: 222.81825}
+        - {x: 241.74603, y: 220.81825}
+        - {x: 244.74603, y: 220.81825}
+        - {x: 246.74603, y: 222.81825}
+        - {x: 246.74603, y: 224.81825}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

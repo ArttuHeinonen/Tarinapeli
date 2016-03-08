@@ -8,22 +8,17 @@ public class GameController : MonoBehaviour {
     public static GameController Instance { get; private set; }
 
     public enum GameState { title, playing, cutScene, gameover};
-    private GameState gameState;
+    public GameState gameState;
 
-    public Camera cam;
-    public GameObject[] pickups;
-    public GameObject CanvasText;
-    public GameObject CanvasGame;
-    public GameObject CanvasEnd;
-    public GameObject title;
-    public Text timerText;
-    public Text scoreText;
-    public DialogueController dialogController;
-    private bool waitForAnimation;
-
-    public float timeLeft = 10;
-    public float minSpawnTime, maxSpawnTime;
-    private float maxWidth;
+    public bool debug = true;
+    private Camera cam;
+    public GameObject canvasText;
+    public GameObject canvasGame;
+    public GameObject canvasEnd;
+    public GameObject canvasTitle;
+    private CutsceneController cutsceneController;
+    private PlayController playController;
+    public Lang lang;
 
     void Start()
     {
@@ -32,17 +27,33 @@ public class GameController : MonoBehaviour {
         {
             cam = Camera.main;
         }
-        waitForAnimation = false;
-        Vector3 upperCorner = new Vector3(Screen.width, Screen.height, 0f);
-        Vector3 targetWidth = cam.ScreenToWorldPoint(upperCorner);
-        float melonWidth = pickups[0].GetComponent<Renderer>().bounds.extents.x;
-        maxWidth = targetWidth.x - melonWidth;
-        GotoTitleScreen();
+        playController = GetComponent<PlayController>();
+        cutsceneController = GetComponent<CutsceneController>();
+        InitLanguage();
+        if (SceneManager.GetActiveScene().name == "MelonScene")
+        {
+            GotoTitleScreen();
+        }
+        else
+        {
+            GoToCutScene();
+        }
+        
     }
 
-    public void StartCutScene()
+    void InitLanguage()
     {
-        title.SetActive(false);
+        if (lang == null)
+        {
+            if (PlayerPrefs.HasKey("Language"))
+            {
+                lang = new Lang((TextAsset)Resources.Load("System"), PlayerPrefs.GetString("Language"));
+            }
+            else
+            {
+                lang = new Lang((TextAsset)Resources.Load("System"), "Finnish");
+            }
+        }
     }
 
     void Update()
@@ -50,7 +61,6 @@ public class GameController : MonoBehaviour {
         switch (gameState)
         {
             case GameState.title:
-                UpdateTitle();
                 break;
             case GameState.playing:
                 UpdatePlaying();
@@ -59,122 +69,97 @@ public class GameController : MonoBehaviour {
                 UpdateCutScene();
                 break;
             case GameState.gameover:
-                GameOver();
                 break;
             default:
                 break;
         }
-    }
 
-    private void UpdateTitle()
-    {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.F1)){
+            GoToCutScene();
+        }
+        else if (Input.GetKeyDown(KeyCode.F2))
         {
-            title.SetActive(false);
-            dialogController.ShowCurrentLine();
-            gameState = GameState.cutScene;
+            GotoPlaymode();
+        }
+        else if (Input.GetKeyDown(KeyCode.F3))
+        {
+            GoToGameOver();
         }
     }
 
     private void UpdatePlaying()
     {
-        timeLeft -= Time.deltaTime;
-        if (timeLeft < 0)
-        {
-            timeLeft = 0;
-        }
-        UpdateTimerText();
+        playController.UpdatePlayMode();
     }
 
     private void UpdateCutScene()
     {
-        if (!waitForAnimation)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                if(dialogController.currentLine == 1)
-                {
-                    OwlController.Instance.AnimateFly();
-                    waitForAnimation = true;
-                    dialogController.MoveToNextLine();
-                }
-                else if (dialogController.currentLine == 2)
-                {
-                    PlayerController.Instance.AnimateSearch();
-                    waitForAnimation = true;
-                    dialogController.MoveToNextLine();
-                }
-                else
-                {
-                    dialogController.ShowNextLine();
-                }
-
-
-                if (dialogController.isFinished)
-                {
-                    GotoPlaymode();
-                }
-            }
-            else
-            {
-                dialogController.ShowCurrentLine();
-            } 
-        }
+        cutsceneController.UpdateCutscene();
     }
 
-    private void GotoTitleScreen()
+    public void GotoTitleScreen()
     {
         gameState = GameState.title;
-        timerText.text = "";
-        scoreText.text = "";
-        PlayerController.Instance.ToggleControl(false);
-        dialogController.HideDialog();
-        title.SetActive(true);
-        CanvasText.SetActive(true);
-        CanvasGame.SetActive(false);
-        CanvasEnd.SetActive(false);
+        SwitchMode();
     }
 
-    private void GotoPlaymode()
+    public void GoToCutScene()
+    {
+        gameState = GameState.cutScene;
+        SwitchMode();
+    }
+
+    public void GotoPlaymode()
     {
         gameState = GameState.playing;
-        PlayerController.Instance.ToggleControl(true);
-        Score.Instance.UpdateScoreText();
-        StartCoroutine(Spawn());
-        title.SetActive(false);
-        CanvasText.SetActive(false);
-        CanvasEnd.SetActive(false);
-        CanvasGame.SetActive(true);
+        SwitchMode();
     }
 
-    private void UpdateTimerText()
+    public void GoToGameOver()
     {
-        timerText.text = "Aikaa: " + Mathf.RoundToInt(timeLeft);
-    }
-
-    IEnumerator Spawn()
-    {
-        yield return new WaitForSeconds(1f);
-        while(timeLeft > 0){
-            GameObject pickup = pickups[Random.Range(0, pickups.Length)];
-            Vector3 spawnPosition = new Vector3(Random.Range(-maxWidth, maxWidth), transform.position.y, 0f);
-            Instantiate(pickup, spawnPosition, Quaternion.Euler(0, 0, Random.Range(0f, 360f)));
-            yield return new WaitForSeconds(Random.Range(1f, 2f));
-        }
-        yield return new WaitForSeconds(1f);
-        GameOver();        
-    }
-
-    public void GameOver()
-    {
-        CanvasEnd.SetActive(true);
-        CanvasGame.SetActive(false);
-        CanvasText.SetActive(false);
-        PlayerController.Instance.ToggleControl(false);
+        gameState = GameState.gameover;
+        SwitchMode();
     }
 
     public void ToggelWaitForAnimation(bool wait)
     {
-        this.waitForAnimation = wait;
+        cutsceneController.ToggelWaitForAnimation(wait);
+    }
+
+    void SwitchMode()
+    {
+        if (canvasTitle != null)
+        {
+            canvasTitle.SetActive(false);
+        }
+        canvasGame.SetActive(false);
+        canvasText.SetActive(false);
+        canvasEnd.SetActive(false);
+
+        PlayerController.Instance.ToggleControl(false);
+
+        switch (gameState)
+        {
+            case GameState.title:
+                canvasTitle.SetActive(true);
+                break;
+            case GameState.playing:
+                canvasGame.SetActive(true);
+                playController.Reset();
+                Score.Instance.UpdateScoreText();
+                PlayerController.Instance.ToggleControl(true);
+                playController.ActivateSpawn();
+                break;
+            case GameState.cutScene:
+                canvasText.SetActive(true);
+                cutsceneController.RestartDialogue();
+                break;
+            case GameState.gameover:
+                canvasEnd.SetActive(true);
+                canvasEnd.GetComponentInChildren<Text>().text = Score.Instance.GetGradeText();
+                break;
+            default:
+                break;
+        }
     }
 }

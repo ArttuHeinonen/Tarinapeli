@@ -2,25 +2,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DialogueController : MonoBehaviour {
 
     public Text text;
     public GameObject textPanel;
 
-    public TextAsset textFile;
-    public string[] dialogs;
+    private Lang sceneText;
+    public List<string> dialogs;
+    private string fileName;
     public int currentLine = 0;
     public int lastLine;
     public bool isFinished;
 
 	void Start () {
-        FillDialogs();
-        isFinished = false;
-        if(lastLine == 0)
-        {
-            lastLine = dialogs.Length - 1;
-        }
+        dialogs = new List<string>();
+        StartOver();
 	}
 
     public void HideDialog()
@@ -64,11 +62,36 @@ public class DialogueController : MonoBehaviour {
         textPanel.SetActive(true);
     }
 
-    private void FillDialogs()
+    public void StartOver()
     {
-        if(textFile != null)
+        currentLine = 0;
+        isFinished = false;
+        dialogs.Clear();
+        switch (SceneManager.GetActiveScene().name)
         {
-            dialogs = textFile.text.Split('\n');
+            case "MelonScene":
+                fileName = "scene1";
+                break;
+            case "UnderwaterScene":
+                fileName = "scene2";
+                break;
+            default:
+                break;
+        }
+        sceneText = new Lang((TextAsset)Resources.Load(fileName), GameController.Instance.lang.getLanguage());
+        //sceneText = new Lang(fileName, GameController.Instance.lang.getLanguage());
+        FillDialogs();
+        if (lastLine == 0)
+        {
+            lastLine = dialogs.Count - 1;
+        }
+    }
+
+    void FillDialogs()
+    {
+        foreach (string line in sceneText.getAllStrings())
+        {
+            dialogs.Add(line);
         }
     }
 }
