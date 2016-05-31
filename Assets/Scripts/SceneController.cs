@@ -5,20 +5,16 @@ using System.IO;
 
 public class SceneController : MonoBehaviour {
 
-    public AudioClip clickAudio;
-    private AudioSource audioSource;
-    void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
-
     public void RestartPlaySection()
     {
+        Debug.Log("ads");
         PlayClickAudio();
         switch (SceneManager.GetActiveScene().name)
         {
             case "MelonScene":
-                PlayerController.Instance.ChangespriteToDefault();
+                PlayerController.Instance.ChangeSpriteToDefault();
+                GrannyController.Instance.ResetAnimationBools();
+                GameController.Instance.SetCurrentLine(2);
                 break;
             case "UnderwaterScene":
                 PlayerController.Instance.ChangeSpriteToUnderWater();
@@ -32,7 +28,7 @@ public class SceneController : MonoBehaviour {
     public void NextLevel()
     {
         PlayClickAudio();
-        PlayerController.Instance.ChangespriteToDefault();
+        PlayerController.Instance.ChangeSpriteToDefault();
         switch (SceneManager.GetActiveScene().name)
         {
             case "MelonScene":
@@ -49,28 +45,36 @@ public class SceneController : MonoBehaviour {
     public void GoHome()
     {
         PlayClickAudio();
-        //SceneManager.LoadScene("HomeScene");
+        PlayerController.Instance.ChangeSpriteToDefault();
+        if (SceneManager.GetActiveScene().name != "MelonScene")
+        {
+            SceneManager.LoadScene("MelonScene");
+        }
+        GameController.Instance.GotoTitleScreen();
     }
 
     public void GoToCutscene()
     {
+        PlayClickAudio();
         GameController.Instance.GoToCutScene();
     }
 
     public void PlayClickAudio()
     {
-        audioSource.PlayOneShot(clickAudio);
+        SoundManager.Instance.PlayClick();
     }
 
-    public void ChangeLanguagesToFinnish()
+    public void ChangeLanguageToFinnish()
     {
         PlayClickAudio();
         GameController.Instance.lang.LoadByAsset((TextAsset)Resources.Load("System"), "Finnish");
+        GoToCutscene();
     }
 
-    public void ChangeLanguagesToEnglish()
+    public void ChangeLanguageToEnglish()
     {
         PlayClickAudio();
         GameController.Instance.lang.LoadByAsset((TextAsset)Resources.Load("System"), "English");
+        GoToCutscene();
     }
 }

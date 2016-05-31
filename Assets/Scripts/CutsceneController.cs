@@ -5,10 +5,9 @@ using UnityEngine.SceneManagement;
 public class CutsceneController : MonoBehaviour {
 
     public DialogueController dialogController;
-    private bool waitForAnimation;
+    public bool waitForAnimation;
 
     void Start () {
-
         waitForAnimation = false;
     }
 	
@@ -29,37 +28,37 @@ public class CutsceneController : MonoBehaviour {
                     default:
                         break;
                 }
-
-                if (dialogController.isFinished)
-                {
-                    GameController.Instance.GotoPlaymode();
-                }
             }
             else
             {
                 dialogController.ShowCurrentLine();
             }
         }
-
     }
 
     void UpdateMelon()
     {
-        if (dialogController.currentLine == 0)
+        switch (dialogController.currentLine)
         {
-            OwlController.Instance.AnimateFly();
-            waitForAnimation = true;
-            dialogController.MoveToNextLine();
-        }
-        else if (dialogController.currentLine == 1)
-        {
-            PlayerController.Instance.Animate("Search");
-            waitForAnimation = true;
-            dialogController.MoveToNextLine();
-        }
-        else
-        {
-            dialogController.ShowNextLine();
+            case 0:
+                OwlController.Instance.AnimateFly();
+                waitForAnimation = true;
+                dialogController.MoveToNextLine();
+                break;
+            case 1:
+                PlayerController.Instance.Animate("Search");
+                waitForAnimation = true;
+                dialogController.MoveToNextLine();
+                break;
+            case 2:
+                GameController.Instance.GotoPlaymode();
+                break;
+            case 3:
+                GameController.Instance.ToggleEndGameButtons(true);
+                break;
+            default:
+                dialogController.ShowNextLine();
+                break;
         }
     }
 
@@ -74,7 +73,7 @@ public class CutsceneController : MonoBehaviour {
         else if (dialogController.currentLine == 1)
         {
             PusuController.Instance.ResetAnimationBools();
-            dialogController.MoveToNextLine();
+            GameController.Instance.GotoPlaymode();
         }
         else
         {
@@ -94,6 +93,51 @@ public class CutsceneController : MonoBehaviour {
         {
             PlayerController.Instance.ChangeSpriteToHungry();
             PlayerController.Instance.PutPlayerNearBond();
+        }
+    }
+
+    public void SkipAnimations()
+    {
+        if (waitForAnimation)
+        {
+            StartCoroutine(OwlController.Instance.SkipAnimation());
+            StartCoroutine(PlayerController.Instance.SkipAnimation());
+            if(GrannyController.Instance != null)
+            {
+                StartCoroutine(GrannyController.Instance.SkipAnimation());
+            }
+        }
+    }
+
+    public void ActivateMusic()
+    {
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "MelonScene":
+                SoundManager.Instance.PlayBirdMusic();
+                break;
+            case "UnderwaterScene":
+                SoundManager.Instance.PlayBirdMusic();
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void SetupScene()
+    {
+        dialogController.LoadDialog();
+        ActivateMusic();
+
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "MelonScene":
+                break;
+            case "UnderwaterScene":
+                PlayerController.Instance.ChangeSpriteToHungry();
+                break;
+            default:
+                break;
         }
     }
 }

@@ -22,14 +22,17 @@ public class PlayerAnimator : MonoBehaviour {
     {
         ScreenController.Instance.SwapToAltBackground();
         ScreenController.Instance.HideChild();
+        GameController.Instance.HideDialog();
         PlayerController.Instance.PlaySplashAudio();
         PlayerController.Instance.ChangeSpriteToUnderWater();
         OwlController.Instance.AnimateSubmarineMove();
+        SoundManager.Instance.StopPlayingMusic();
         PlayerController.Instance.Animate("FallInWater");
     }
 
     public void FallInWater()
     {
+        GameController.Instance.ShowDialog();
         PusuController.Instance.Animate("StartThinking");
     }
 }

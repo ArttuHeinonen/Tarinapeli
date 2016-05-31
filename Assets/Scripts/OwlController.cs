@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 public class OwlController : MonoBehaviour {
 
@@ -9,12 +9,10 @@ public class OwlController : MonoBehaviour {
     public bool flying;
     public float animationDuration = 5f;
     public AudioClip splash;
-    private AudioSource source;
 
 	void Start () {
         Instance = this;
         anim = GetComponentInChildren<Animator>();
-        source = GetComponent<AudioSource>();
     }
 	
     public void AnimateFly()
@@ -35,7 +33,13 @@ public class OwlController : MonoBehaviour {
 
     public void PlaySplashSound()
     {
-        source.PlayOneShot(splash);
+        SoundManager.Instance.PlaySingle(splash);
     }
 
+    public IEnumerator SkipAnimation()
+    {
+        anim.speed = 99999;
+        yield return new WaitForSeconds(0.2f);
+        anim.speed = 1;
+    }
 }

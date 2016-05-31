@@ -35,12 +35,7 @@ public class DialogueController : MonoBehaviour {
 
     public void ShowNextLine()
     {
-        if(currentLine >= lastLine)
-        {
-            HideDialog();
-            isFinished = true;
-        }
-        else
+        if(!IsCurrentLineOverLastLine())
         {
             currentLine++;
             ShowCurrentLine();
@@ -50,22 +45,47 @@ public class DialogueController : MonoBehaviour {
 
     public void MoveToNextLine()
     {
+        if (!IsCurrentLineOverLastLine())
+        {
+            currentLine++;
+            if(currentLine >= lastLine)
+            {
+                isFinished = true;
+            }
+        }
+        textPanel.SetActive(true);
+    }
+
+    private bool IsCurrentLineOverLastLine()
+    {
         if (currentLine >= lastLine)
         {
             HideDialog();
+            currentLine = lastLine;
             isFinished = true;
+            return true;
         }
         else
         {
-            currentLine++;
+            return false;
         }
-        textPanel.SetActive(true);
     }
 
     public void StartOver()
     {
         currentLine = 0;
         isFinished = false;
+        dialogs.Clear();
+        
+        LoadDialog();
+        if (lastLine == 0)
+        {
+            lastLine = dialogs.Count - 1;
+        }
+    }
+
+    public void LoadDialog()
+    {
         dialogs.Clear();
         switch (SceneManager.GetActiveScene().name)
         {
@@ -79,12 +99,7 @@ public class DialogueController : MonoBehaviour {
                 break;
         }
         sceneText = new Lang((TextAsset)Resources.Load(fileName), GameController.Instance.lang.getLanguage());
-        //sceneText = new Lang(fileName, GameController.Instance.lang.getLanguage());
         FillDialogs();
-        if (lastLine == 0)
-        {
-            lastLine = dialogs.Count - 1;
-        }
     }
 
     void FillDialogs()

@@ -110,7 +110,7 @@ public class Score : MonoBehaviour {
         {
             stars = 2;
         }
-        else if (grade >= 0.85)
+        else if (grade >= 0.75)
         {
             stars = 3;
         }

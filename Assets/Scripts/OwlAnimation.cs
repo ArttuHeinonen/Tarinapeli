@@ -22,10 +22,11 @@ public class OwlAnimation : MonoBehaviour {
     public void HitOoWhileFlying()
     {
         PlayerController.Instance.ChangeSpriteToHungry();
+        SoundManager.Instance.PlayBoing();
     }
 
     public void OoRecoversFromHit()
     {
-        PlayerController.Instance.ChangespriteToDefault();
+        PlayerController.Instance.ChangeSpriteToDefault();
     }
 }

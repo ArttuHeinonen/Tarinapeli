@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour {
 
     public AudioClip swimAudio;
     public AudioClip splashAudio;
-    private AudioSource audioSource;
 
     void Awake()
     {
@@ -35,7 +34,6 @@ public class PlayerController : MonoBehaviour {
         maxWidth = target.x;
         maxHeigh = target.y;
         anim = GetComponentInChildren<Animator>();
-        audioSource = GetComponent<AudioSource>();
     }
 
 	public void MelonUpdate () {
@@ -128,17 +126,34 @@ public class PlayerController : MonoBehaviour {
         anim.SetBool("Hug", true);
     }
 
-    public void ChangespriteToDefault()
+    public void ChangeSpriteToShocked()
+    {
+        ResetAnimationBools();
+        anim.SetBool("IsShocked", true);
+    }
+    
+    public void ChangeSpriteToSquashed()
+    {
+        ResetAnimationBools();
+        anim.SetBool("IsSquashed", true);
+    }
+
+    public bool IsAnimationBoolPlaying(string name)
+    {
+        return anim.GetBool(name);
+    }
+    public void ChangeSpriteToDefault()
     {
         ResetAnimationBools();
     }
-
     void ResetAnimationBools()
     {
         anim.SetBool("IsHungry", false);
         anim.SetBool("IsUnderwater", false);
         anim.SetBool("IsHappy", false);
         anim.SetBool("Hug", false);
+        anim.SetBool("IsShocked", false);
+        anim.SetBool("IsSquashed", false);
     }
 
     public void FreezeControls(float cooldown)
@@ -157,6 +172,11 @@ public class PlayerController : MonoBehaviour {
         transform.position = new Vector3(transform.position.x, -2.5f);
     }
 
+    public void ResetPlayerXPosition()
+    {
+        transform.position = new Vector3(0, transform.position.y, 0);
+    }
+
     public void PutPlayerNearBond()
     {
         transform.position = new Vector3(-maxWidth + 2, -2.5f, 0);
@@ -169,11 +189,19 @@ public class PlayerController : MonoBehaviour {
 
     public void PlaySwimAudio()
     {
-        audioSource.PlayOneShot(swimAudio);
+        SoundManager.Instance.PlaySingle(swimAudio);
     }
 
     public void PlaySplashAudio()
     {
-        audioSource.PlayOneShot(splashAudio);
+        SoundManager.Instance.PlaySingle(splashAudio);
+    }
+
+    public IEnumerator SkipAnimation()
+    {
+        ResetAnimationBools();
+        anim.speed = 9999;
+        yield return new WaitForSeconds(0.2f);
+        anim.speed = 1;
     }
 }

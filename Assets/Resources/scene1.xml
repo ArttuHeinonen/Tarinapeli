@@ -5,12 +5,14 @@
 		<string name="dialog0">Ool-la  on  näl-kä.</string>
 		<string name="dialog1">Mi-tä  Oo  et-sii?</string>
 		<string name="dialog2">Me-lo-ne-ja!</string>
+		<string name="dialog3">Voi mum-mo!</string>
 	</Finnish>
 
 	<English>
 		<string name="dialog0">Oo  is  hungry.</string>
 		<string name="dialog1">What  is  Oo  looking  for?</string>
 		<string name="dialog2">Watermelons!</string>
+		<string name="dialog3">Oh granny!</string>
 	</English>
 
 </languages>

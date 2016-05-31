@@ -69,6 +69,20 @@ public class PlayController : MonoBehaviour {
         }
     }
 
+    public void ActivateMusic()
+    {
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "MelonScene":
+                SoundManager.Instance.PlayMelonGameMusic();
+                break;
+            case "UnderwaterScene":
+                break;
+            default:
+                break;
+        }
+    }
+
     private void UpdateTimer()
     {
         timeLeft -= Time.deltaTime;
@@ -115,6 +129,7 @@ public class PlayController : MonoBehaviour {
             yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
         }
         yield return new WaitForSeconds(3f);
+        PlayerController.Instance.ResetPlayerXPosition();
         GameController.Instance.GoToGameOver();
     }
 
