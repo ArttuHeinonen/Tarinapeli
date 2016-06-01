@@ -92,4 +92,13 @@ public class SoundManager : MonoBehaviour {
         musicSource.clip = melonGameMusic;
         musicSource.Play();
     }
+
+    public IEnumerator MuteAllSoundsForLimitedTime(float seconds)
+    {
+        sfxSource.volume = 0;
+        musicSource.volume = 0;
+        yield return new WaitForSeconds(seconds);
+        sfxSource.volume = 1;
+        musicSource.volume = 1;
+    }
 }

@@ -7,7 +7,6 @@ public class SceneController : MonoBehaviour {
 
     public void RestartPlaySection()
     {
-        Debug.Log("ads");
         PlayClickAudio();
         switch (SceneManager.GetActiveScene().name)
         {
@@ -46,7 +45,12 @@ public class SceneController : MonoBehaviour {
     {
         PlayClickAudio();
         PlayerController.Instance.ChangeSpriteToDefault();
-        if (SceneManager.GetActiveScene().name != "MelonScene")
+        OwlController.Instance.SkipAnimation();
+        if (SceneManager.GetActiveScene().name == "MelonScene")
+        {
+            GrannyController.Instance.ResetAnimationBools();
+        }
+        else
         {
             SceneManager.LoadScene("MelonScene");
         }
