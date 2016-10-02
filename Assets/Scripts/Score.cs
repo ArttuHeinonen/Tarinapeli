@@ -8,6 +8,7 @@ public class Score : MonoBehaviour {
     public static Score Instance { get; private set; }
 
     public Text scoreText;
+    public Lang scoreLang;
     public int maxScore = 0;
     public float grade;
     public int score = 0;
@@ -19,6 +20,22 @@ public class Score : MonoBehaviour {
     {
         Instance = this;
         score = 0;
+        InitLanguage();
+    }
+
+    void InitLanguage()
+    {
+        if (scoreLang == null)
+        {
+            if (PlayerPrefs.HasKey("Language"))
+            {
+                scoreLang = new Lang((TextAsset)Resources.Load("score"), PlayerPrefs.GetString("Language"));
+            }
+            else
+            {
+                scoreLang = new Lang((TextAsset)Resources.Load("score"), "English");
+            }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -121,16 +138,16 @@ public class Score : MonoBehaviour {
         if (stars == 0)
         {
             PlayerController.Instance.ChangeSpriteToHungry();
-            return GameController.Instance.lang.getString("melonBadEnd");
+            return scoreLang.getString("melonBadEnd");
         }
         else if (stars == 1 || stars == 2)
         {
-            return GameController.Instance.lang.getString("melonGoodEnd");
+            return scoreLang.getString("melonGoodEnd");
         }
         else
         {
             PlayerController.Instance.ChangeSpriteToHappy();
-            return GameController.Instance.lang.getString("melonGreatEnd");
+            return scoreLang.getString("melonGreatEnd");
         }
     }
 
@@ -139,12 +156,12 @@ public class Score : MonoBehaviour {
         PlayerController.Instance.ResetPlayerYPosition();
         if (stars == 0)
         {
-            return GameController.Instance.lang.getString("underwaterBadEnd");
+            return scoreLang.getString("underwaterBadEnd");
         }
         else
         {
             PusuController.Instance.Animate("PusuMoveToOo");
-            return GameController.Instance.lang.getString("underwaterGoodEnd");
+            return scoreLang.getString("underwaterGoodEnd");
         }
     }
 

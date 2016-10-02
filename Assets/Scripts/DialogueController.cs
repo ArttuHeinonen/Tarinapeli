@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -98,7 +97,7 @@ public class DialogueController : MonoBehaviour {
             default:
                 break;
         }
-        sceneText = new Lang((TextAsset)Resources.Load(fileName), GameController.Instance.lang.getLanguage());
+        sceneText = new Lang((TextAsset)Resources.Load(fileName), GameController.Instance.sysLang.getLanguage());
         FillDialogs();
     }
 

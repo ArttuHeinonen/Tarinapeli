@@ -2,21 +2,19 @@
 <languages>
 
 	<Finnish>
-		<string name="app_name">Tarinapeli</string>
-		<string name="melonBadEnd">Näl-kä!</string>
-		<string name="melonGoodEnd">Nam!</string>
-		<string name="melonGreatEnd">Nam!!</string>
-    <string name="underwaterBadEnd">Auts</string>
-		<string name="underwaterGoodEnd">Ys-tä-vä</string>
+		<string name="app_name">Oon elämä</string>
+		<string name="startButton">ALOITA</string>
+		<string name="chooseStory">Valitse tarina</string>
+		<string name="chooseLang">Valitse kieli</string>
+		<string name="credits">Tekijät</string>
 	</Finnish>
 
 	<English>
-    <string name="app_name">Storygame</string>
-		<string name="melonBadEnd">Hungry!</string>
-		<string name="melonGoodEnd">Yummy!</string>
-    <string name="melonGreatEnd">Yummy!!</string>
-		<string name="underwaterBadEnd">Ouch</string>
-		<string name="underwaterGoodEnd">Friend</string>
+		<string name="app_name">Oo's life</string>
+		<string name="startButton">START</string>
+		<string name="chooseStory">Choose story</string>
+		<string name="chooseLang">Choose language</string>
+		<string name="credits">Credits</string>
 	</English>
 
 </languages>

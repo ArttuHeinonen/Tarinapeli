@@ -8,9 +8,12 @@ public class PusuAnimation : MonoBehaviour {
         PlayerController.Instance.ChangeSpriteToHug();
     }
 
+    public void StartThinking()
+    {
+        PusuController.Instance.ChangeSpriteToThinkBubble();
+    }
     public void StopThinking()
     {
         GameController.Instance.ToggelWaitForAnimation(false);
-        PusuController.Instance.ChangeSpriteToThinkBubble();
     }
 }

@@ -71,14 +71,14 @@ public class SceneController : MonoBehaviour {
     public void ChangeLanguageToFinnish()
     {
         PlayClickAudio();
-        GameController.Instance.lang.LoadByAsset((TextAsset)Resources.Load("System"), "Finnish");
+        GameController.Instance.sysLang.LoadByAsset((TextAsset)Resources.Load("System"), "Finnish");
         GoToCutscene();
     }
 
     public void ChangeLanguageToEnglish()
     {
         PlayClickAudio();
-        GameController.Instance.lang.LoadByAsset((TextAsset)Resources.Load("System"), "English");
+        GameController.Instance.sysLang.LoadByAsset((TextAsset)Resources.Load("System"), "English");
         GoToCutscene();
     }
 }

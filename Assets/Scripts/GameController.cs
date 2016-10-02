@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour {
     private CutsceneController cutsceneController;
     private PlayController playController;
     private GameOverController gameOverController;
-    public Lang lang;
+    public Lang sysLang;
 
     void Start()
     {
@@ -48,15 +48,15 @@ public class GameController : MonoBehaviour {
 
     void InitLanguage()
     {
-        if (lang == null)
+        if (sysLang == null)
         {
             if (PlayerPrefs.HasKey("Language"))
             {
-                lang = new Lang((TextAsset)Resources.Load("System"), PlayerPrefs.GetString("Language"));
+                sysLang = new Lang((TextAsset)Resources.Load("System"), PlayerPrefs.GetString("Language"));
             }
             else
             {
-                lang = new Lang((TextAsset)Resources.Load("System"), "Finnish");
+                sysLang = new Lang((TextAsset)Resources.Load("System"), "English");
             }
         }
     }
