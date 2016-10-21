@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -29,6 +28,7 @@ public class GameOverController : MonoBehaviour {
                             MelonAfterScene();
                             break;
                         case "UnderwaterScene":
+                            UnderwaterAfterScene();
                             break;
                     }
                 }
@@ -42,6 +42,13 @@ public class GameOverController : MonoBehaviour {
         GrannyController.Instance.AnimateFalling();
         PlayerController.Instance.ChangeSpriteToShocked();
         GameController.Instance.HideDialog();
+        GameController.Instance.MoveNextDialog();
+    }
+
+    public void UnderwaterAfterScene()
+    {
+        GameController.Instance.canvasEnd.GetComponentInChildren<Text>().text = "";
+        Straw.Instance.AnimateSucking();
         GameController.Instance.MoveNextDialog();
     }
     

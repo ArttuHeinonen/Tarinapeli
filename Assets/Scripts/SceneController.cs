@@ -16,6 +16,8 @@ public class SceneController : MonoBehaviour {
                 GameController.Instance.SetCurrentLine(2);
                 break;
             case "UnderwaterScene":
+                PlayerController.Instance.ChangeSpriteToDefault();
+                PusuController.Instance.ResetAnimationBools();
                 PlayerController.Instance.ChangeSpriteToUnderWater();
                 break;
             default:
@@ -31,6 +33,7 @@ public class SceneController : MonoBehaviour {
         switch (SceneManager.GetActiveScene().name)
         {
             case "MelonScene":
+                GrannyController.Instance.ResetAnimationBools();
                 SceneManager.LoadScene("UnderwaterScene");
                 break;
             case "UnderwaterScene":
@@ -52,6 +55,7 @@ public class SceneController : MonoBehaviour {
         }
         else
         {
+            PusuController.Instance.ResetAnimationBools();
             SceneManager.LoadScene("MelonScene");
         }
         GameController.Instance.GotoTitleScreen();
@@ -66,19 +70,5 @@ public class SceneController : MonoBehaviour {
     public void PlayClickAudio()
     {
         SoundManager.Instance.PlayClick();
-    }
-
-    public void ChangeLanguageToFinnish()
-    {
-        PlayClickAudio();
-        GameController.Instance.sysLang.LoadByAsset((TextAsset)Resources.Load("System"), "Finnish");
-        GoToCutscene();
-    }
-
-    public void ChangeLanguageToEnglish()
-    {
-        PlayClickAudio();
-        GameController.Instance.sysLang.LoadByAsset((TextAsset)Resources.Load("System"), "English");
-        GoToCutscene();
     }
 }

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<languages>
+
+	<Finnish>
+		<string name="dialog0">A-va-ruus kut-suu.</string>
+		<string name="dialog1">A-pu-a! Mus-ta-auk-ko!</string>
+		<string name="dialog2">Ha-Lu-an u-los!</string>
+		<string name="dialog3">Voi ti-pu!</string>
+	</Finnish>
+
+	<English>
+		<string name="dialog0">Space calls.</string>
+		<string name="dialog1">Help! A blackhole!</string>
+		<string name="dialog2">I want out!</string>
+		<string name="dialog3">Oh bird!</string>
+	</English>
+
+	<Swedish>
+		<string name="dialog0">Space calls.</string>
+		<string name="dialog1">Help! A blackhole!</string>
+		<string name="dialog2">I want out!</string>
+		<string name="dialog3">Oh bird!</string>
+	</Swedish>
+	
+	<German>
+		<string name="dialog0">Space calls.</string>
+		<string name="dialog1">Help! A blackhole!</string>
+		<string name="dialog2">I want out!</string>
+		<string name="dialog3">Oh bird!</string>
+	</German>
+	
+</languages>

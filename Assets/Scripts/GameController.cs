@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
 
 public class GameController : MonoBehaviour {
 
-    public static GameController Instance { get; private set; }
+    public static GameController Instance = null;
 
     public enum GameState { title, playing, cutScene, gameover};
     public GameState gameState;
@@ -21,12 +19,23 @@ public class GameController : MonoBehaviour {
     private CutsceneController cutsceneController;
     private PlayController playController;
     private GameOverController gameOverController;
-    public Lang sysLang;
+
+    void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else if(Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
-        Instance = this;
         if(cam == null)
         {
             cam = Camera.main;
@@ -48,15 +57,19 @@ public class GameController : MonoBehaviour {
 
     void InitLanguage()
     {
-        if (sysLang == null)
+        if(Object.ReferenceEquals(null, LangController.Instance))
+        {
+            LangController.Instance = new LangController();
+        }
+        if (LangController.Instance.GetSysLang() == null)
         {
             if (PlayerPrefs.HasKey("Language"))
             {
-                sysLang = new Lang((TextAsset)Resources.Load("System"), PlayerPrefs.GetString("Language"));
+                LangController.Instance.InitSystemLang(PlayerPrefs.GetString("Language"));
             }
             else
             {
-                sysLang = new Lang((TextAsset)Resources.Load("System"), "English");
+                LangController.Instance.InitSystemLang("English");
             }
         }
     }

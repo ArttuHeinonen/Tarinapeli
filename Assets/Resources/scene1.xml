@@ -15,4 +15,17 @@
 		<string name="dialog3">Oh granny!</string>
 	</English>
 
+	<Swedish>
+		<string name="dialog0">Oo  är hungrig.</string>
+		<string name="dialog1">Vad söker Oo efter?</string>
+		<string name="dialog2">Meloner!</string>
+		<string name="dialog3">Oh mormor!</string>
+	</Swedish>
+	
+	<German>
+		<string name="dialog0">Oo ist hungrig.</string>
+		<string name="dialog1">Wonach sucht Oo?</string>
+		<string name="dialog2">Melonen!</string>
+		<string name="dialog3">Oh nein Oma!</string>
+	</German>
 </languages>

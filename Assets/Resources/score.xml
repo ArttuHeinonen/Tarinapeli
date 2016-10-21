@@ -7,6 +7,8 @@
 		<string name="melonGreatEnd">Nam!!</string>
 		<string name="underwaterBadEnd">Auts</string>
 		<string name="underwaterGoodEnd">Ys-tä-vä</string>
+		<string name="spaceBadEnd">Uu-des-taan!</string>
+		<string name="spaceGoodEnd">On-nis-tuin</string>
 	</Finnish>
 
 	<English>
@@ -15,6 +17,28 @@
 		<string name="melonGreatEnd">Yummy!!</string>
 		<string name="underwaterBadEnd">Ouch</string>
 		<string name="underwaterGoodEnd">Friend</string>
+		<string name="spaceBadEnd">Again!</string>
+		<string name="spaceGoodEnd">I did it.</string>
 	</English>
 
+	<Swedish>
+		<string name="melonBadEnd">Hungrig!</string>
+		<string name="melonGoodEnd">Nam!</string>
+		<string name="melonGreatEnd">Nam!!</string>
+		<string name="underwaterBadEnd">Auts</string>
+		<string name="underwaterGoodEnd">Vän</string>
+		<string name="spaceBadEnd">Uu-des-taan!</string>
+		<string name="spaceGoodEnd">On-nis-tuin</string>
+	</Swedish>
+
+	<German>
+		<string name="melonBadEnd">Hungrig!</string>
+		<string name="melonGoodEnd">Yum!</string>
+		<string name="melonGreatEnd">Yummy!!</string>
+		<string name="underwaterBadEnd">Ouch</string>
+		<string name="underwaterGoodEnd">Freund</string>
+		<string name="spaceBadEnd">Aufs Neue!</string>
+		<string name="spaceGoodEnd">Jag gjorde det</string>
+	</German>
+	
 </languages>

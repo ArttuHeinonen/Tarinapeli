@@ -3,10 +3,10 @@ using System.Collections;
 
 public class SoundManager : MonoBehaviour {
 
+    public static SoundManager Instance = null;
 
     public AudioSource sfxSource;
     public AudioSource musicSource;
-    public static SoundManager Instance = null;
 
     public AudioClip click;
     public AudioClip boing;
@@ -15,9 +15,10 @@ public class SoundManager : MonoBehaviour {
     public AudioClip titleMusic;
     public AudioClip birdMusic;
     public AudioClip melonGameMusic;
+    public AudioClip underwaterGameMusic;
+    public AudioClip spaceGameMusic;
 
-
-	void Awake () {
+    void Awake () {
 	    if(Instance == null)
         {
             Instance = this;
@@ -90,6 +91,18 @@ public class SoundManager : MonoBehaviour {
     public void PlayMelonGameMusic()
     {
         musicSource.clip = melonGameMusic;
+        musicSource.Play();
+    }
+
+    public void PlayUnderWaterMusic()
+    {
+        musicSource.clip = underwaterGameMusic;
+        musicSource.Play();
+    }
+
+    public void PlaySpaceMusic()
+    {
+        musicSource.clip = spaceGameMusic;
         musicSource.Play();
     }
 

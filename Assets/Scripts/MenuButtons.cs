@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class MenuButtons : MonoBehaviour {
 
@@ -115,8 +116,9 @@ public class MenuButtons : MonoBehaviour {
 
     public void ChangeLanguage(string lang)
     {
-        GameController.Instance.sysLang.LoadByAsset((TextAsset)Resources.Load("System"), lang);
+        sysLang.LoadByAsset((TextAsset)Resources.Load("System"), lang);
         UpdateUIElements();
+        LangController.Instance.SetSysLang(this.sysLang);
         HideCanvas();
     }
 
@@ -130,13 +132,17 @@ public class MenuButtons : MonoBehaviour {
 
     public void StartScene(string scene)
     {
+        HideCanvas();
         switch (scene)
         {
             case "Melon":
-
+                GameController.Instance.GoToCutScene();
                 break;
             case "Underwater":
-
+                SceneManager.LoadScene("UnderwaterScene");
+                break;
+            case "Space":
+                SceneManager.LoadScene("SpaceScene");
                 break;
             default:
                 break;

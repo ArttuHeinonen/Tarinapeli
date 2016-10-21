@@ -3,7 +3,7 @@
 
 	<Finnish>
 		<string name="app_name">Oon elämä</string>
-		<string name="startButton">ALOITA</string>
+		<string name="startButton">Aloita</string>
 		<string name="chooseStory">Valitse tarina</string>
 		<string name="chooseLang">Valitse kieli</string>
 		<string name="credits">Tekijät</string>
@@ -11,10 +11,26 @@
 
 	<English>
 		<string name="app_name">Oo's life</string>
-		<string name="startButton">START</string>
+		<string name="startButton">Start</string>
 		<string name="chooseStory">Choose story</string>
 		<string name="chooseLang">Choose language</string>
 		<string name="credits">Credits</string>
 	</English>
 
+	<Swedish>
+		<string name="app_name">Oo's Leben</string>
+		<string name="startButton">Starta</string>
+		<string name="chooseStory">Välj språk</string>
+		<string name="chooseLang">Välj berättelse</string>
+		<string name="credits">Författare</string>
+	</Swedish>
+	
+	<German>
+		<string name="app_name">Oos liv</string>
+		<string name="startButton">Starten</string>
+		<string name="chooseStory">Sprache auswählen</string>
+		<string name="chooseLang">Geschichte auswählen</string>
+		<string name="credits">Verfasser</string>
+	</German>
+	
 </languages>

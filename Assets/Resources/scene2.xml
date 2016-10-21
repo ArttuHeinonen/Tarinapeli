@@ -4,11 +4,25 @@
 	<Finnish>
 		<string name="dialog0">Ool-la  on  kuu-ma.</string>
 		<string name="dialog1">Mis-sä  on  Pu-su?</string>
+		<string name="dialog2">Voi pil-li!</string>
 	</Finnish>
 
 	<English>
 		<string name="dialog0">Oo  feels  hot.</string>
 		<string name="dialog1">Where  is  Kiss?</string>
+		<string name="dialog2">Oh straw!</string>
 	</English>
 
+	<Swedish>
+		<string name="dialog0">Oo är varm</string>
+		<string name="dialog1">Var är Pussen?</string>
+		<string name="dialog2">Oh visselpipa!</string>
+	</Swedish>
+
+	<German>
+		<string name="dialog0">Oo fühlt sich heiß.</string>
+		<string name="dialog1">Wo ist Küsschen</string>
+		<string name="dialog2">Oh Pfeife!</string>
+	</German>
+	
 </languages>

@@ -77,6 +77,7 @@ public class PlayController : MonoBehaviour {
                 SoundManager.Instance.PlayMelonGameMusic();
                 break;
             case "UnderwaterScene":
+                SoundManager.Instance.PlayUnderWaterMusic();
                 break;
             default:
                 break;

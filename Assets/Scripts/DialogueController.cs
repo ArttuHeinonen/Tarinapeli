@@ -94,10 +94,23 @@ public class DialogueController : MonoBehaviour {
             case "UnderwaterScene":
                 fileName = "scene2";
                 break;
+            case "SpaceScene":
+                fileName = "scene3";
+                break;
             default:
                 break;
         }
-        sceneText = new Lang((TextAsset)Resources.Load(fileName), GameController.Instance.sysLang.getLanguage());
+
+        if(LangController.Instance.GetSysLang() != null)
+        {
+            string language = LangController.Instance.GetSysLangString();
+            LangController.Instance.InitSceneLang(fileName, language);
+        }
+        else
+        {
+            LangController.Instance.InitSceneLang(fileName, "English");
+        }
+        sceneText = LangController.Instance.GetSceneLang();
         FillDialogs();
     }
 
