@@ -100,8 +100,11 @@ public class DialogueController : MonoBehaviour {
             default:
                 break;
         }
-
-        if(LangController.Instance.GetSysLang() != null)
+        if (Object.ReferenceEquals(null, LangController.Instance))
+        {
+            LangController.Instance = new LangController();
+        }
+        if (LangController.Instance.GetSysLang() != null)
         {
             string language = LangController.Instance.GetSysLangString();
             LangController.Instance.InitSceneLang(fileName, language);

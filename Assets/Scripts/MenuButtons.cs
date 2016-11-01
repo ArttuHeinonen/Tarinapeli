@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class MenuButtons : MonoBehaviour {
 
     public bool isCanvasShowing = false;
-    public Canvas sceneCanvas;
-    public Canvas infoCanvas;
-    public Canvas langCanvas;
+    public GameObject scenePanel;
+    public GameObject infoPanel;
+    public GameObject langPanel;
 
     public Lang sysLang;
 
@@ -19,9 +19,9 @@ public class MenuButtons : MonoBehaviour {
 
     public void Start()
     {
-        sceneCanvas.enabled = false;
-        infoCanvas.enabled = false;
-        langCanvas.enabled = false;
+        scenePanel.SetActive(false);
+        infoPanel.SetActive(false);
+        langPanel.SetActive(false);
         InitLanguage();
         UpdateUIElements();
     }
@@ -57,7 +57,7 @@ public class MenuButtons : MonoBehaviour {
         if (!isCanvasShowing)
         {
             isCanvasShowing = true;
-            sceneCanvas.enabled = true;
+            scenePanel.SetActive(true);
         }
         PlayClickAudio();
     }
@@ -67,7 +67,7 @@ public class MenuButtons : MonoBehaviour {
         if (!isCanvasShowing)
         {
             isCanvasShowing = true;
-            infoCanvas.enabled = true;
+            infoPanel.SetActive(true);
         }
         PlayClickAudio();
     }
@@ -77,7 +77,7 @@ public class MenuButtons : MonoBehaviour {
         if (!isCanvasShowing)
         {
             isCanvasShowing = true;
-            langCanvas.enabled = true;
+            langPanel.SetActive(true);
         }
         PlayClickAudio();
     }
@@ -87,9 +87,9 @@ public class MenuButtons : MonoBehaviour {
         if (isCanvasShowing)
         {
             isCanvasShowing = false;
-            sceneCanvas.enabled = false;
-            infoCanvas.enabled = false;
-            langCanvas.enabled = false;
+            scenePanel.SetActive(false);
+            infoPanel.SetActive(false);
+            langPanel.SetActive(false);
         }
         PlayClickAudio();
     }
@@ -139,10 +139,10 @@ public class MenuButtons : MonoBehaviour {
                 GameController.Instance.GoToCutScene();
                 break;
             case "Underwater":
-                SceneManager.LoadScene("UnderwaterScene");
+                //SceneManager.LoadScene("UnderwaterScene");
                 break;
             case "Space":
-                SceneManager.LoadScene("SpaceScene");
+                //SceneManager.LoadScene("SpaceScene");
                 break;
             default:
                 break;

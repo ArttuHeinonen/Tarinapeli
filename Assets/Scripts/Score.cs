@@ -20,22 +20,20 @@ public class Score : MonoBehaviour {
     {
         Instance = this;
         score = 0;
-        InitLanguage();
     }
 
     void InitLanguage()
     {
-        if (scoreLang == null)
+        if(LangController.Instance.GetSysLang() != null)
         {
-            if (PlayerPrefs.HasKey("Language"))
-            {
-                scoreLang = new Lang((TextAsset)Resources.Load("score"), PlayerPrefs.GetString("Language"));
-            }
-            else
-            {
-                scoreLang = new Lang((TextAsset)Resources.Load("score"), "English");
-            }
+            string language = LangController.Instance.GetSysLangString();
+            LangController.Instance.InitSceneLang("score", language);
         }
+        else
+        {
+            LangController.Instance.InitSceneLang("score", "English");
+        }
+        scoreLang = LangController.Instance.GetSceneLang();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -220,6 +218,7 @@ public class Score : MonoBehaviour {
         grade = 0f;
         stars = 0;
         lives = maxLives;
+        InitLanguage();
     }
 
     public int getStars()

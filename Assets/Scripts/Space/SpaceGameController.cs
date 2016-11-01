@@ -36,6 +36,10 @@ public class SpaceGameController : MonoBehaviour {
 
     void InitLanguage()
     {
+        if (Object.ReferenceEquals(null, LangController.Instance))
+        {
+            LangController.Instance = new LangController();
+        }
         if (LangController.Instance.GetSysLang() == null)
         {
             if (PlayerPrefs.HasKey("Language"))

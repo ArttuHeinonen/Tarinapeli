@@ -21,7 +21,7 @@ public class SpaceCutscene : MonoBehaviour {
                 switch (dialogController.currentLine)
                 {
                     case 0:
-                        
+                        //SpaceOwl.Fly();
                         waitForAnimation = true;
                         dialogController.MoveToNextLine();
                         break;

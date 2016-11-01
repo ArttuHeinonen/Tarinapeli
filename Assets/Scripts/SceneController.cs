@@ -37,7 +37,7 @@ public class SceneController : MonoBehaviour {
                 SceneManager.LoadScene("UnderwaterScene");
                 break;
             case "UnderwaterScene":
-                SceneManager.LoadScene("MelonScene");
+                SceneManager.LoadScene("SpaceScene");
                 break;
             default:
                 break;

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SpaceOwlController : MonoBehaviour {
 
-    public static OwlController Instance { get; private set; }
+    public static SpaceOwlController Instance { get; private set; }
 
     private Animator anim;
     public bool flying;
@@ -11,8 +11,9 @@ public class SpaceOwlController : MonoBehaviour {
     public AudioClip splash;
 
     void Start () {
-	    
-	}
+        Instance = this;
+        anim = GetComponentInChildren<Animator>();
+    }
 	
 
 	void Update () {
