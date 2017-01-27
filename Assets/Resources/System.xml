@@ -28,9 +28,41 @@
 	<German>
 		<string name="app_name">Oos liv</string>
 		<string name="startButton">Starten</string>
-		<string name="chooseStory">Sprache auswählen</string>
-		<string name="chooseLang">Geschichte auswählen</string>
+		<string name="chooseStory">Geschichte auswählen</string>
+		<string name="chooseLang">Sprache auswählen</string>
 		<string name="credits">Verfasser</string>
 	</German>
+	
+	<Spanish>
+		<string name="app_name">La vida de Oo</string>
+		<string name="startButton">Comenzar</string>
+		<string name="chooseStory">Elige el cuento</string>
+		<string name="chooseLang">Elige el idioma</string>
+		<string name="credits">Los autores</string>
+	</Spanish>
+	
+	<Italy>
+		<string name="app_name">La vita di Oo</string>
+		<string name="startButton">Cominciare</string>
+		<string name="chooseStory">Scegli la storia</string>
+		<string name="chooseLang">Scegli la lingua</string>
+		<string name="credits">Gli autori</string>
+	</Italy>
+	
+	<French>
+		<string name="app_name">La vie de Oo</string>
+		<string name="startButton">Commencer</string>
+		<string name="chooseStory">Choisis l’histoire</string>
+		<string name="chooseLang">Choisis la langue</string>
+		<string name="credits">Les auteurs</string>
+	</French>
+	
+	<Indonesian>
+		<string name="app_name">Oo's life</string>
+		<string name="startButton">Start</string>
+		<string name="chooseStory">Pilih cerita</string>
+		<string name="chooseLang">Pilih bahasa</string>
+		<string name="credits">Kredit</string>
+	</Indonesian>
 	
 </languages>

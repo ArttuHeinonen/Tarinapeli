@@ -16,6 +16,7 @@ public class SoundManager : MonoBehaviour {
     public AudioClip birdMusic;
     public AudioClip melonGameMusic;
     public AudioClip underwaterGameMusic;
+    public AudioClip spaceHumming;
     public AudioClip spaceGameMusic;
 
     void Awake () {
@@ -100,7 +101,12 @@ public class SoundManager : MonoBehaviour {
         musicSource.Play();
     }
 
-    public void PlaySpaceMusic()
+    public void PlaySpaceHumming()
+    {
+
+    }
+
+    public void PlaySpaceGameMusic()
     {
         musicSource.clip = spaceGameMusic;
         musicSource.Play();

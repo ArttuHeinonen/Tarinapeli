@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class SpaceGameController : MonoBehaviour {
 
-    public static SpaceGameController Instance { get; private set; }
+    public static SpaceGameController Instance;
 
     public enum GameState { playing, cutScene, gameover };
     public GameState gameState;
@@ -16,20 +16,31 @@ public class SpaceGameController : MonoBehaviour {
     public GameObject canvasEnd;
     public GameObject canvasEndButtons;
     private SpaceCutscene cutsceneController;
-    private PlayController playController;
-    private GameOverController gameOverController;
+    private SpacePlayController playController;
+    private SpaceGameOverController gameOverController;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
-        Instance = this;
         if (cam == null)
         {
             cam = Camera.main;
         }
-        playController = GetComponent<PlayController>();
+        playController = GetComponent<SpacePlayController>();
         cutsceneController = GetComponent<SpaceCutscene>();
-        gameOverController = GetComponent<GameOverController>();
+        gameOverController = GetComponent<SpaceGameOverController>();
         InitLanguage();
         GoToCutScene();
     }
@@ -138,7 +149,7 @@ public class SpaceGameController : MonoBehaviour {
         canvasEnd.SetActive(false);
         canvasEndButtons.SetActive(false);
 
-        PlayerController.Instance.ToggleControl(false);
+        SpacePlayerController.Instance.ToggleControl(false);
 
         switch (gameState)
         {

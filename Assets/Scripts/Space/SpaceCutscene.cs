@@ -21,19 +21,20 @@ public class SpaceCutscene : MonoBehaviour {
                 switch (dialogController.currentLine)
                 {
                     case 0:
-                        //SpaceOwl.Fly();
+                        SpaceOwlController.Instance.AnimateFly();
                         waitForAnimation = true;
                         dialogController.MoveToNextLine();
                         break;
                     case 1:
+                        SpacePlayerController.Instance.Animate("GetSuckedIn");
                         waitForAnimation = true;
                         dialogController.MoveToNextLine();
                         break;
                     case 2:
-                        GameController.Instance.GotoPlaymode();
+                        SpaceGameController.Instance.GotoPlaymode();
                         break;
                     case 3:
-                        GameController.Instance.ToggleEndGameButtons(true);
+                        SpaceGameController.Instance.ToggleEndGameButtons(true);
                         break;
                     default:
                         dialogController.ShowNextLine();
@@ -49,7 +50,7 @@ public class SpaceCutscene : MonoBehaviour {
 
     public void ActivateMusic()
     {
-        
+        SoundManager.Instance.PlaySpaceHumming();
     }
 
     public void ToggelWaitForAnimation(bool wait)

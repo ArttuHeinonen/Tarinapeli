@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class SpacePlayController : MonoBehaviour {
@@ -30,12 +30,83 @@ public class SpacePlayController : MonoBehaviour {
         ResetTime();
     }
 	
-	void Update () {
-	
-
-
+	public void UpdatePlayMode()
+    {
+        SpacePlayerController.Instance.Update();
 	}
 
+    private void UpdateTimer()
+    {
+        timeLeft -= Time.deltaTime;
+        if (timeLeft < 0)
+        {
+            timeLeft = 0;
+        }
+        UpdateTimerText();
+    }
+
+    void UpdateTimerText()
+    {
+        timer.value = Mathf.RoundToInt(timeLeft);
+    }
+
+    public void ActivateSpawn()
+    {
+        StartCoroutine(SpawnTrash());
+    }
+
+    public void ActivateMusic()
+    {
+        SoundManager.Instance.PlaySpaceGameMusic();
+    }
+
+    public IEnumerator SpawnTrash()
+    {
+        setSpawnTimers(3, 3);
+        totalSpawns = 0;
+        while (timeLeft > 6 && Score.Instance.lives > 0)
+        {
+            if (totalSpawns == 5)
+            {
+                Spawner.Instace.SpawnOwl();
+            }
+            else
+            {
+                Spawner.Instace.Spawn();
+            }
+            yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
+            totalSpawns++;
+            addDifficulty(4, 0.5f);
+        }
+        if (Score.Instance.lives > 0)
+        {
+            yield return new WaitForSeconds(7f);
+        }
+        GameController.Instance.GoToGameOver();
+    }
+
+    void setSpawnTimers(float min, float max)
+    {
+        this.minSpawnTime = min;
+        this.maxSpawnTime = max;
+    }
+
+    void addDifficulty(int interval, float addedChallenge)
+    {
+        if (totalSpawns % interval == 0 && minSpawnTime > 0.1f)
+        {
+            minSpawnTime -= addedChallenge;
+            maxSpawnTime -= addedChallenge;
+        }
+        if (minSpawnTime <= 0)
+        {
+            minSpawnTime = 0.1f;
+        }
+        if (maxSpawnTime <= minSpawnTime)
+        {
+            maxSpawnTime = minSpawnTime;
+        }
+    }
     public void ResetTime()
     {
         timer.maxValue = maxTime;
@@ -46,6 +117,6 @@ public class SpacePlayController : MonoBehaviour {
     public void Reset()
     {
         ResetTime();
-        Score.Instance.ResetScores();
+        SpaceScore.Instance.ResetScores();
     }
 }

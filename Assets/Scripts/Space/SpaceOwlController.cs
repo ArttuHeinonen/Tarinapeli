@@ -14,9 +14,10 @@ public class SpaceOwlController : MonoBehaviour {
         Instance = this;
         anim = GetComponentInChildren<Animator>();
     }
-	
 
-	void Update () {
-	
-	}
+    public void AnimateFly()
+    {
+        anim.SetTrigger("flying");
+        flying = true;
+    }
 }
