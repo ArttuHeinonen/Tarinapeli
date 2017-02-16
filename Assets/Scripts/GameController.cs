@@ -2,31 +2,31 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameController : MonoBehaviour {
-
+public class GameController : MonoBehaviour
+{
     public static GameController Instance = null;
 
-    public enum GameState { title, playing, cutScene, gameover};
+    public enum GameState { playing, cutScene, gameover };
     public GameState gameState;
 
     public bool debug = true;
     private Camera cam;
-    public GameObject canvasText;
-    public GameObject canvasGame;
-    public GameObject canvasEnd;
-    public GameObject canvasTitle;
-    public GameObject canvasEndButtons;
-    private CutsceneController cutsceneController;
-    private PlayController playController;
-    private GameOverController gameOverController;
+    public GameObject cutscenePanel;
+    public GameObject playPanel;
+    public GameObject gameoverPanel;
+    public Cutscene cutscene;
+    public Play play;
+    public GameOver gameOver;
+    public Score score;
+    public Player player;
 
     void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
         }
-        else if(Instance != this)
+        else if (Instance != this)
         {
             Destroy(gameObject);
         }
@@ -35,28 +35,17 @@ public class GameController : MonoBehaviour {
     void Start()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
-        if(cam == null)
+        if (cam == null)
         {
             cam = Camera.main;
         }
-        playController = GetComponent<PlayController>();
-        cutsceneController = GetComponent<CutsceneController>();
-        gameOverController = GetComponent<GameOverController>();
         InitLanguage();
-        if (SceneManager.GetActiveScene().name == "MelonScene")
-        {
-            GotoTitleScreen();
-        }
-        else
-        {
-            GoToCutScene();
-        }
-        
+        GoToCutScene();
     }
 
     void InitLanguage()
     {
-        if(Object.ReferenceEquals(null, LangController.Instance))
+        if (Object.ReferenceEquals(null, LangController.Instance))
         {
             LangController.Instance = new LangController();
         }
@@ -77,25 +66,21 @@ public class GameController : MonoBehaviour {
     {
         switch (gameState)
         {
-            case GameState.title:
-                break;
             case GameState.playing:
-                UpdatePlaying();
+                play.UpdatePlay();
                 break;
             case GameState.cutScene:
-                UpdateCutScene();
+                cutscene.UpdateCutscene();
                 break;
             case GameState.gameover:
-                UpdateGameOver();
-                break;
-            default:
+                gameOver.UpdateGameOver();
                 break;
         }
         if (debug)
         {
             if (Input.GetKeyDown(KeyCode.F1))
             {
-                cutsceneController.dialogController.StartOver();
+                cutscene.dialog.StartOver();
                 GoToCutScene();
             }
             else if (Input.GetKeyDown(KeyCode.F2))
@@ -104,31 +89,15 @@ public class GameController : MonoBehaviour {
             }
             else if (Input.GetKeyDown(KeyCode.F3))
             {
-                cutsceneController.dialogController.currentLine = 2;
+                cutscene.dialog.SkipToLastLine();
                 GoToGameOver();
             }
         }
     }
 
-    private void UpdatePlaying()
-    {
-        playController.UpdatePlayMode();
-    }
-
-    private void UpdateCutScene()
-    {
-        cutsceneController.UpdateCutscene();
-    }
-
-    private void UpdateGameOver()
-    {
-        gameOverController.UpdateGameOver();
-    }
-
     public void GotoTitleScreen()
     {
-        gameState = GameState.title;
-        SwitchMode();
+        SceneManager.LoadScene("Main");
     }
 
     public void GoToCutScene()
@@ -149,52 +118,31 @@ public class GameController : MonoBehaviour {
         SwitchMode();
     }
 
-    public void ToggleEndGameButtons(bool visible)
-    {
-        canvasEndButtons.SetActive(visible);
-    }
-
-    public void ToggelWaitForAnimation(bool wait)
-    {
-        cutsceneController.ToggelWaitForAnimation(wait);
-    }
-
     void SwitchMode()
     {
-        if (canvasTitle != null)
-        {
-            canvasTitle.SetActive(false);
-        }
-        canvasGame.SetActive(false);
-        canvasText.SetActive(false);
-        canvasEnd.SetActive(false);
-        canvasEndButtons.SetActive(false);
+        playPanel.SetActive(false);
+        cutscenePanel.SetActive(false);
+        gameoverPanel.SetActive(false);
 
-        PlayerController.Instance.ToggleControl(false);
+        player.ToggleControl(false);
 
         switch (gameState)
         {
-            case GameState.title:
-                cutsceneController.SkipAnimations();
-                cutsceneController.RestartDialogue();
-                canvasTitle.SetActive(true);
-                SoundManager.Instance.PlayTitleMusic();
-                break;
             case GameState.playing:
-                canvasGame.SetActive(true);
-                playController.Reset();
-                Score.Instance.UpdateScoreText();
-                PlayerController.Instance.ToggleControl(true);
-                playController.ActivateSpawn();
-                playController.ActivateMusic();
+                playPanel.SetActive(true);
+                play.ResetValues();
+                score.UpdateScoreText();
+                player.ToggleControl(true);
+                play.ActivateSpawn();
+                play.ActivateMusic();
                 break;
             case GameState.cutScene:
-                cutsceneController.SetupScene();
-                canvasText.SetActive(true);
+                cutscene.SetupScene();
+                cutscenePanel.SetActive(true);
                 break;
             case GameState.gameover:
-                canvasEnd.SetActive(true);
-                canvasEnd.GetComponentInChildren<Text>().text = Score.Instance.GetGradeText();
+                gameoverPanel.SetActive(true);
+                gameoverPanel.GetComponentInChildren<Text>().text = score.GetGradeText();
                 break;
             default:
                 break;
@@ -203,34 +151,34 @@ public class GameController : MonoBehaviour {
 
     public bool IsDialogFinished()
     {
-        return cutsceneController.dialogController.isFinished;
+        return cutscene.dialog.isFinished;
     }
 
     public void SetCurrentLine(int line)
     {
-        cutsceneController.dialogController.currentLine = line;
-        if(cutsceneController.dialogController.currentLine >= cutsceneController.dialogController.lastLine)
+        cutscene.dialog.currentLine = line;
+        if (cutscene.dialog.currentLine >= cutscene.dialog.lastLine)
         {
-            cutsceneController.dialogController.isFinished = true;
+            cutscene.dialog.isFinished = true;
         }
         else
         {
-            cutsceneController.dialogController.isFinished = false;
+            cutscene.dialog.isFinished = false;
         }
     }
 
     public void MoveNextDialog()
     {
-        cutsceneController.dialogController.MoveToNextLine();
+        cutscene.dialog.MoveToNextLine();
     }
 
     public void HideDialog()
     {
-        cutsceneController.dialogController.HideDialog();
+        cutscene.dialog.HideDialog();
     }
 
     public void ShowDialog()
     {
-        cutsceneController.dialogController.ShowCurrentLine();
+        cutscene.dialog.ShowCurrentLine();
     }
 }

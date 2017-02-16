@@ -74,7 +74,6 @@ public class DialogueController : MonoBehaviour {
     {
         currentLine = 0;
         isFinished = false;
-        dialogs.Clear();
         
         LoadDialog();
         if (lastLine == 0)
@@ -83,24 +82,32 @@ public class DialogueController : MonoBehaviour {
         }
     }
 
+    public void SkipToLastLine()
+    {
+        currentLine = lastLine;
+    }
+
     public void LoadDialog()
     {
         dialogs.Clear();
         switch (SceneManager.GetActiveScene().name)
         {
-            case "MelonScene":
+            case "Melon":
                 fileName = "scene1";
                 break;
-            case "UnderwaterScene":
+            case "Underwater":
                 fileName = "scene2";
                 break;
-            case "SpaceScene":
+            case "Space":
                 fileName = "scene3";
+                break;
+            case "Intro":
+                fileName = "intro";
                 break;
             default:
                 break;
         }
-        if (Object.ReferenceEquals(null, LangController.Instance))
+        if (!LangController.Instance)
         {
             LangController.Instance = new LangController();
         }

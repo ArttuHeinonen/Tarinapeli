@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<languages>
+
+	<Finnish>
+		<string name="dialog0">Hei, olen ****!</string>
+		<string name="dialog1">Ra-kas-tan kir-jo-ja.</string>
+		<string name="dialog2">Ku-ka vei kir-jat?</string>
+	</Finnish>
+
+	<English>
+		<string name="dialog0">Hi, I'm ****!</string>
+		<string name="dialog1">I love books.</string>
+		<string name="dialog2">Who stole the books?</string>
+	</English>
+
+	<Swedish>
+		<string name="dialog0">Hi, I'm ****!</string>
+		<string name="dialog1">I love books.</string>
+		<string name="dialog2">Who stole the books?</string>
+	</Swedish>
+	
+	<German>
+		<string name="dialog0">Hi, I'm ****!</string>
+		<string name="dialog1">I love books.</string>
+		<string name="dialog2">Who stole the books?</string>
+	</German>
+	
+	<Spanish>
+		<string name="dialog0">Hi, I'm ****!</string>
+		<string name="dialog1">I love books.</string>
+		<string name="dialog2">Who stole the books?</string>
+	</Spanish>
+	
+	<Italy>
+		<string name="dialog0">Hi, I'm ****!</string>
+		<string name="dialog1">I love books.</string>
+		<string name="dialog2">Who stole the books?</string>
+	</Italy>
+	
+	<French>
+		<string name="dialog0">Hi, I'm ****!</string>
+		<string name="dialog1">I love books.</string>
+		<string name="dialog2">Who stole the books?</string>
+	</French>
+	
+	<Indonesian>
+		<string name="dialog0">Hi, I'm ****!</string>
+		<string name="dialog1">I love books.</string>
+		<string name="dialog2">Who stole the books?</string>
+	</Indonesian>
+</languages>
