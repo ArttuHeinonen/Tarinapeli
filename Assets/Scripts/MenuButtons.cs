@@ -44,7 +44,7 @@ public class MenuButtons : MonoBehaviour {
     public void StartTheGame()
     {
         PlayClickAudio();
-        GameController.Instance.GoToCutScene();
+        SceneManager.LoadScene("Melon");
     }
 
     public void PlayClickAudio()
@@ -139,10 +139,10 @@ public class MenuButtons : MonoBehaviour {
                 GameController.Instance.GoToCutScene();
                 break;
             case "Underwater":
-                //SceneManager.LoadScene("UnderwaterScene");
+                //SceneManager.LoadScene("Underwater");
                 break;
             case "Space":
-                //SceneManager.LoadScene("SpaceScene");
+                //SceneManager.LoadScene("Space");
                 break;
             default:
                 break;

@@ -1,23 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ScreenController : MonoBehaviour {
 
     public static ScreenController Instance { get; private set; }
 
-    public Sprite altBackground;
+    public List<Sprite> altBackgrounds;
+    public int currentBackground;
     private GameObject child;
     private SpriteRenderer sr;
 
 	void Start () {
         Instance = this;
         sr = GetComponent<SpriteRenderer>();
+        currentBackground = 0;
         ResizeBackground();
     }
 
-    public void SwapToAltBackground()
+    public void SwapToNextBackground()
     {
-        sr.sprite = altBackground;
+        currentBackground++;
+        UpdateBackground();
+    }
+
+    public void SwapToPrevBackground()
+    {
+        currentBackground--;
+        UpdateBackground();
+    }
+
+    public void UpdateBackground()
+    {
+        sr.sprite = altBackgrounds[currentBackground];
         ResizeBackground();
     }
 
@@ -32,7 +47,7 @@ public class ScreenController : MonoBehaviour {
         float height = sr.bounds.size.y;
 
         float worldScreenHeight = Camera.main.orthographicSize * 2f;
-        float worldScreenWidth = worldScreenHeight / Screen.height * Screen.width;
+        float worldScreenWidth = worldScreenHeight * Screen.width / Screen.height;
 
         Vector3 xWidth = transform.localScale;
         xWidth.x = worldScreenWidth / width;
@@ -52,6 +67,5 @@ public class ScreenController : MonoBehaviour {
             child = this.gameObject.transform.GetChild(0).gameObject;
             child.SetActive(false);
         }
-        
     }
 }

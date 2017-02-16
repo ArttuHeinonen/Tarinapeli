@@ -20,7 +20,7 @@ public class PlayerAnimator : MonoBehaviour {
 
     public void JumpToWater()
     {
-        ScreenController.Instance.SwapToAltBackground();
+        ScreenController.Instance.SwapToNextBackground();
         ScreenController.Instance.HideChild();
         GameController.Instance.HideDialog();
         PlayerController.Instance.PlaySplashAudio();
