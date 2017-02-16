@@ -12,9 +12,20 @@ public class BackgroundManager : MonoBehaviour
     private GameObject child;
     private SpriteRenderer sr;
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
-        Instance = this;
         sr = GetComponent<SpriteRenderer>();
         currentBackground = 0;
         ResizeBackground();
@@ -29,6 +40,19 @@ public class BackgroundManager : MonoBehaviour
     public void SwapToPrevBackground()
     {
         currentBackground--;
+        UpdateBackground();
+    }
+    /// <summary>
+    /// </summary>
+    /// <param name="i">Background number from the list. Note! Counting starts from 0!</param>
+    public void SwapToBackGround(int i)
+    {
+        if(i < 0 || i > backgrounds.Count)
+        {
+            Debug.Log("Error! Given background on position " + i + " not found!");
+            return;
+        }
+        currentBackground = i;
         UpdateBackground();
     }
 
