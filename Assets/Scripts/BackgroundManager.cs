@@ -43,6 +43,7 @@ public class BackgroundManager : MonoBehaviour
         UpdateBackground();
     }
     /// <summary>
+    /// Swap to specific background
     /// </summary>
     /// <param name="i">Background number from the list. Note! Counting starts from 0!</param>
     public void SwapToBackGround(int i)
