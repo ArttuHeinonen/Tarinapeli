@@ -9,6 +9,7 @@ public class MenuButtons : MonoBehaviour {
     public GameObject scenePanel;
     public GameObject infoPanel;
     public GameObject langPanel;
+    public GameObject settingsPanel;
 
     public Lang sysLang;
 
@@ -25,6 +26,7 @@ public class MenuButtons : MonoBehaviour {
         scenePanel.SetActive(false);
         infoPanel.SetActive(false);
         langPanel.SetActive(false);
+        settingsPanel.SetActive(false);
         InitLanguage();
         UpdateUIElements();
         audioManager = AudioManager.Instance;

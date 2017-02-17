@@ -6,6 +6,7 @@
 		<string name="startButton">Aloita</string>
 		<string name="chooseStory">Valitse tarina</string>
 		<string name="chooseLang">Valitse kieli</string>
+		<string name="settings">Asetukset</string>
 		<string name="credits">Tekijät</string>
 	</Finnish>
 
@@ -14,6 +15,7 @@
 		<string name="startButton">Start</string>
 		<string name="chooseStory">Choose story</string>
 		<string name="chooseLang">Choose language</string>
+		<string name="settings">Settings</string>
 		<string name="credits">Credits</string>
 	</English>
 
@@ -22,6 +24,7 @@
 		<string name="startButton">Starta</string>
 		<string name="chooseStory">Välj språk</string>
 		<string name="chooseLang">Välj berättelse</string>
+		<string name="settings">Settings</string>
 		<string name="credits">Författare</string>
 	</Swedish>
 	
@@ -30,6 +33,7 @@
 		<string name="startButton">Starten</string>
 		<string name="chooseStory">Geschichte auswählen</string>
 		<string name="chooseLang">Sprache auswählen</string>
+		<string name="settings">Settings</string>
 		<string name="credits">Verfasser</string>
 	</German>
 	
@@ -38,6 +42,7 @@
 		<string name="startButton">Comenzar</string>
 		<string name="chooseStory">Elige el cuento</string>
 		<string name="chooseLang">Elige el idioma</string>
+		<string name="settings">Settings</string>
 		<string name="credits">Los autores</string>
 	</Spanish>
 	
@@ -46,6 +51,7 @@
 		<string name="startButton">Cominciare</string>
 		<string name="chooseStory">Scegli la storia</string>
 		<string name="chooseLang">Scegli la lingua</string>
+		<string name="settings">Settings</string>
 		<string name="credits">Gli autori</string>
 	</Italy>
 	
@@ -54,6 +60,7 @@
 		<string name="startButton">Commencer</string>
 		<string name="chooseStory">Choisis l’histoire</string>
 		<string name="chooseLang">Choisis la langue</string>
+		<string name="settings">Settings</string>
 		<string name="credits">Les auteurs</string>
 	</French>
 	
@@ -62,6 +69,7 @@
 		<string name="startButton">Start</string>
 		<string name="chooseStory">Pilih cerita</string>
 		<string name="chooseLang">Pilih bahasa</string>
+		<string name="settings">Settings</string>
 		<string name="credits">Kredit</string>
 	</Indonesian>
 	
