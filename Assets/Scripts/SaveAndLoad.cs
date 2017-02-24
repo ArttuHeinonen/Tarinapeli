@@ -5,6 +5,7 @@ using System.IO;
 
 public class SaveAndLoad
 {
+
     public void SaveGame(GameData data)
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -29,7 +30,6 @@ public class SaveAndLoad
             FileStream file = File.Open(Application.persistentDataPath + "/data.dat", FileMode.Open);
             GameData data = (GameData)bf.Deserialize(file);
             file.Close();
-            data.UpdateGameData(data);
             return data;
         }
         Debug.Log("Save file not found!");

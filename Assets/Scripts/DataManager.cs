@@ -66,13 +66,17 @@ public class DataManager : MonoBehaviour {
         saveAndLoad.SaveGame(gameData);
     }
 
+    public GameData LoadData()
+    {
+        return saveAndLoad.LoadGame();
+    }
+
     public bool DoesSaveFileExist()
     {
         if (File.Exists(Application.persistentDataPath + "/data.dat"))
         {
             return true;
         }
-
         return false;
     }
 
@@ -82,7 +86,15 @@ public class DataManager : MonoBehaviour {
         {
             return true;
         }
-
         return false;
     }
+
+    public void DeleteData()
+    {
+        if (DoesSaveFileExist())
+        {
+            saveAndLoad.DeleteSave();
+        }
+    }
+
 }

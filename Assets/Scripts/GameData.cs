@@ -1,23 +1,31 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+
 /// <summary>
 /// Player save game
 /// </summary>
 [Serializable]
 public class GameData {
 
-    public bool skipIntro;
+    private List<StageData> stages;
+    #region Properties
+    public List<StageData> Stages
+    {
+        get
+        {
+            return stages;
+        }
+
+        set
+        {
+            stages = value;
+        }
+    }
+    #endregion
 
     public GameData()
     {
-        skipIntro = false;
-    }
-
-    public void UpdateGameData(GameData data)
-    {
-        skipIntro = data.skipIntro;
+        Stages = new List<StageData>();
     }
 
 }

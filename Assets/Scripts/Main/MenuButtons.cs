@@ -17,6 +17,7 @@ public class MenuButtons : MonoBehaviour {
     public Text chooseStoryText;
     public Text chooseLangText;
     public Text creditsText;
+    public Text eraseDataText;
 
     public AudioManager audioManager;
     public string buttonClick = "Button_Click";
@@ -62,15 +63,10 @@ public class MenuButtons : MonoBehaviour {
         audioManager.PlaySound(buttonClick);
     }
 
-    //TODO: Replace with going to overworld scene view
     public void ShowSelectSceneCanvas()
     {
-        if (!isCanvasShowing)
-        {
-            isCanvasShowing = true;
-            scenePanel.SetActive(true);
-        }
         PlayClickAudio();
+        SceneManager.LoadScene("Overworld");
     }
 
     public void ShowInfoCanvas()
@@ -93,6 +89,16 @@ public class MenuButtons : MonoBehaviour {
         PlayClickAudio();
     }
 
+    public void ShowSettingsPanel()
+    {
+        if (!isCanvasShowing)
+        {
+            isCanvasShowing = true;
+            settingsPanel.SetActive(true);
+        }
+        PlayClickAudio();
+    }
+
     public void HideCanvas()
     {
         if (isCanvasShowing)
@@ -101,6 +107,7 @@ public class MenuButtons : MonoBehaviour {
             scenePanel.SetActive(false);
             infoPanel.SetActive(false);
             langPanel.SetActive(false);
+            settingsPanel.SetActive(false);
         }
         PlayClickAudio();
     }
@@ -158,5 +165,11 @@ public class MenuButtons : MonoBehaviour {
             default:
                 break;
         }
+    }
+
+    public void EraseData()
+    {
+        DataManager.Instance.DeleteData();
+        DataManager.Instance.CreateData();
     }
 }
