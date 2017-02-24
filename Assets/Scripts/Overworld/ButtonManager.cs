@@ -5,17 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour {
 
-	
-
-
-	void Start () {
-		
-	}
-
-
     public void StagePressed(string sceneName)
     {
-        AudioManager.Instance.PlaySound("Click");
+        AudioManager.Instance.PlaySound("Button_Click");
         SceneManager.LoadScene(sceneName);
     }
 }
