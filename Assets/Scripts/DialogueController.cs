@@ -29,7 +29,6 @@ public class DialogueController : MonoBehaviour {
     public void ShowCurrentLine()
     {
         text.text = dialogs[currentLine];
-        textPanel.SetActive(true);
     }
 
     public void ShowNextLine()
@@ -90,23 +89,8 @@ public class DialogueController : MonoBehaviour {
     public void LoadDialog()
     {
         dialogs.Clear();
-        switch (SceneManager.GetActiveScene().name)
-        {
-            case "Melon":
-                fileName = "scene1";
-                break;
-            case "Underwater":
-                fileName = "scene2";
-                break;
-            case "Space":
-                fileName = "scene3";
-                break;
-            case "Intro":
-                fileName = "intro";
-                break;
-            default:
-                break;
-        }
+        fileName = SceneManager.GetActiveScene().name;
+
         if (!LangController.Instance)
         {
             LangController.Instance = new LangController();

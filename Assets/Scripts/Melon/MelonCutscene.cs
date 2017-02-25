@@ -4,15 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class IntroCutscene : Cutscene
+public class MelonCutscene : Cutscene
 {
 
     public override void SetupScene()
     {
         dialog.LoadDialog();
-        //Starts with Oo gazing away from books animation
-        //For testing purposes no animations are added
         waitForAnimation = false;
+
     }
 
     public override void SkipAnimation()
@@ -38,11 +37,7 @@ public class IntroCutscene : Cutscene
                         dialog.MoveToNextLine();
                         break;
                     case 2:
-                        if (!DataManager.Instance.DoesSaveFileExist())
-                        {
-                            DataManager.Instance.CreateData();
-                        }
-                        SceneManager.LoadScene("Main");
+                        GameController.Instance.GotoPlaymode();
                         break;
                     default:
                         break;
