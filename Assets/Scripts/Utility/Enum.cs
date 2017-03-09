@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IntroPlayer : Player {
-
-
+public enum GameState{
+    playing,
+    cutScene,
+    gameover
 }

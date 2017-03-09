@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public static GameController Instance = null;
-
-    public enum GameState { playing, cutScene, gameover };
     public GameState gameState;
 
     public bool debug = true;
@@ -17,8 +15,6 @@ public class GameController : MonoBehaviour
     public Cutscene cutscene;
     public Play play;
     public GameOver gameOver;
-    public Score score;
-    public Player player;
 
     void Awake()
     {
@@ -124,15 +120,14 @@ public class GameController : MonoBehaviour
         cutscenePanel.SetActive(false);
         gameoverPanel.SetActive(false);
 
-        player.ToggleControl(false);
+        play.canControl = false;
 
         switch (gameState)
         {
             case GameState.playing:
                 playPanel.SetActive(true);
                 play.ResetValues();
-                score.UpdateScoreText();
-                player.ToggleControl(true);
+                play.canControl = true;
                 play.ActivateSpawn();
                 play.ActivateMusic();
                 break;
@@ -142,7 +137,7 @@ public class GameController : MonoBehaviour
                 break;
             case GameState.gameover:
                 gameoverPanel.SetActive(true);
-                gameoverPanel.GetComponentInChildren<Text>().text = score.GetGradeText();
+                gameoverPanel.GetComponentInChildren<Text>().text = play.score.GetGradeText();
                 break;
             default:
                 break;

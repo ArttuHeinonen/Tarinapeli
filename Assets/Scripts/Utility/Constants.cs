@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MelonPlayer : Player {
-
-
+public class Constants {
+    public static readonly float MinMoveDistance = 0.01f;
 }

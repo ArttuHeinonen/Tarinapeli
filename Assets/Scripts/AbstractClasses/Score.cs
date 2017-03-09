@@ -10,8 +10,12 @@ public abstract class Score : MonoBehaviour {
 
     public abstract string GetGradeText();
 
-    public void UpdateScoreText()
-    {
+    public abstract void UpdateScoreText();
 
-    }
+    public abstract void ResetScore();
+
+    public abstract void IncreaseScore();
+
+    public abstract void DecreaseScore();
+
 }
