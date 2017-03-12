@@ -15,7 +15,7 @@ public class MovingScore : Score {
 
     public override string GetGradeText()
     {
-        throw new NotImplementedException();
+        return scoreText.text;
     }
 
     
@@ -25,8 +25,10 @@ public class MovingScore : Score {
             for (int i = 0; i < pickupParent.transform.childCount; i++)
             {
                 pickups.Add(pickupParent.transform.GetChild(i).gameObject);
+                if (pickupParent.transform.GetChild(i).transform.GetChild(0).tag == "PickupPoint"){
+                    maxScore++;
+                }
             }
-            maxScore = pickups.Count;
             currentScore = 0;
             UpdateScoreText();
         }
@@ -40,7 +42,6 @@ public class MovingScore : Score {
     public override void ResetScore()
     {
         currentScore = 0;
-        maxScore = pickups.Count;
         UpdateScoreText();
     }
 

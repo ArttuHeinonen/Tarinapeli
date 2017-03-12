@@ -90,6 +90,11 @@ public class LangController : MonoBehaviour {
 
     void Start()
     {
+        GetInstance();
+    }
+
+    public LangController GetInstance()
+    {
         if (Instance == null)
         {
             Instance = this;
@@ -99,6 +104,7 @@ public class LangController : MonoBehaviour {
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
+        return Instance;
     }
 
     public void InitSystemLang(string lang)

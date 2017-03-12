@@ -15,7 +15,7 @@ public abstract class Play : MonoBehaviour {
     public bool canControl;
     public bool isOnCooldown;
     public float cooldownTime = 0;
-
+    public int prevTime;
     public float screenWidth;
     public float screenHeight;
 
@@ -43,6 +43,7 @@ public abstract class Play : MonoBehaviour {
         if (timeLeft < 0)
         {
             timeLeft = 0;
+            GameController.Instance.GoToGameOver();
         }
         UpdateTimerText();
     }
@@ -51,6 +52,15 @@ public abstract class Play : MonoBehaviour {
     {
         timer.value = Mathf.RoundToInt(timeLeft);
         timerText.text = timer.value.ToString();
+        if(timerText.gameObject.GetComponent<AnimateText>() != null)
+        {
+            if (prevTime != Mathf.RoundToInt(timer.value))
+            {
+                prevTime = Mathf.RoundToInt(timer.value); 
+                timerText.gameObject.GetComponent<AnimateText>().ScaleTextUp();
+            }
+            
+        }
     }
 
     public void ReduceCooldown()

@@ -14,7 +14,6 @@ public class MoveObject : MonoBehaviour {
         startingPosition = this.transform.position;
 	}
 	
-	
 	void Update () {
 
         if(isMoving){

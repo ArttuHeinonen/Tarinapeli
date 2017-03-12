@@ -18,7 +18,7 @@ public class MovingPlay : Play {
         for (int i = 0; i < pickups.transform.childCount; i++)
         {
             pickups.transform.GetChild(i).GetComponent<MoveObject>().isMoving = true;
-            pickups.transform.GetChild(i).GetComponent<Rotate>().isRotating = true;
+            pickups.transform.GetChild(i).transform.GetChild(0).GetComponent<Rotate>().isRotating = true;
         }
         ActivateWalls();
     }
@@ -45,6 +45,7 @@ public class MovingPlay : Play {
 
     public void UpdatePlayer()
     {
+        player.GetComponent<MovingPlayer>().UpdatePlayer();
         if (Input.GetMouseButton(0))
         {
             if (canControl)
