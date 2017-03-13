@@ -82,6 +82,7 @@ public abstract class Play : MonoBehaviour {
         timer.maxValue = maxTime;
         timeLeft = maxTime;
         timer.value = maxTime;
+        prevTime = Mathf.RoundToInt(maxTime);
     }
 
     public void ToggleControl()

@@ -4,9 +4,8 @@ using UnityEngine;
 
 public abstract class Score : MonoBehaviour {
 
-	void Start () {
-		
-	}
+    public int currentScore;
+    public int maxScore;
 
     public abstract string GetGradeText();
 

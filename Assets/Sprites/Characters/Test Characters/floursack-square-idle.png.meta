@@ -1,9 +1,40 @@
 fileFormatVersion: 2
 guid: 3aa130d1efb948c4590040327060da0d
-timeCreated: 1489418824
+timeCreated: 1489420904
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: floursack-square-idle_0
+    21300002: floursack-square-idle_1
+    21300004: floursack-square-idle_2
+    21300006: floursack-square-idle_3
+    21300008: floursack-square-idle_4
+    21300010: floursack-square-idle_5
+    21300012: floursack-square-idle_6
+    21300014: floursack-square-idle_7
+    21300016: floursack-square-idle_8
+    21300018: floursack-square-idle_9
+    21300020: floursack-square-idle_10
+    21300022: floursack-square-idle_11
+    21300024: floursack-square-idle_12
+    21300026: floursack-square-idle_13
+    21300028: floursack-square-idle_14
+    21300030: floursack-square-idle_15
+    21300032: floursack-square-idle_16
+    21300034: floursack-square-idle_17
+    21300036: floursack-square-idle_18
+    21300038: floursack-square-idle_19
+    21300040: floursack-square-idle_20
+    21300042: floursack-square-idle_21
+    21300044: floursack-square-idle_22
+    21300046: floursack-square-idle_23
+    21300048: floursack-square-idle_24
+    21300050: floursack-square-idle_25
+    21300052: floursack-square-idle_26
+    21300054: floursack-square-idle_27
+    21300056: floursack-square-idle_28
+    21300058: floursack-square-idle_29
+    21300060: floursack-square-idle_30
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -66,9 +97,444 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: floursack-square-idle_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1618
+        width: 210
+        height: 278
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_1
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1619
+        width: 209
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_2
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 1619
+        width: 207
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_3
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 1619
+        width: 211
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_4
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 1618
+        width: 213
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_5
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 1618
+        width: 213
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_6
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 1297
+        width: 212
+        height: 293
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_7
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 1298
+        width: 208
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_8
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 1298
+        width: 208
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_9
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 1297
+        width: 211
+        height: 276
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_10
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 1296
+        width: 209
+        height: 286
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_11
+      rect:
+        serializedVersion: 2
+        x: 1250
+        y: 1295
+        width: 209
+        height: 297
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_12
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 974
+        width: 210
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_13
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 974
+        width: 210
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_14
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 974
+        width: 208
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_15
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 975
+        width: 209
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_16
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 976
+        width: 211
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_17
+      rect:
+        serializedVersion: 2
+        x: 1275
+        y: 977
+        width: 208
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_18
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 656
+        width: 208
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_19
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 655
+        width: 213
+        height: 293
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_20
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 655
+        width: 212
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_21
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 655
+        width: 212
+        height: 294
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_22
+      rect:
+        serializedVersion: 2
+        x: 1030
+        y: 655
+        width: 211
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_23
+      rect:
+        serializedVersion: 2
+        x: 1281
+        y: 656
+        width: 205
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_24
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 335
+        width: 210
+        height: 279
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_25
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 334
+        width: 210
+        height: 279
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_26
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 333
+        width: 207
+        height: 289
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_27
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 332
+        width: 209
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_28
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 332
+        width: 210
+        height: 307
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_29
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 332
+        width: 210
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: floursack-square-idle_30
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 12
+        width: 207
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

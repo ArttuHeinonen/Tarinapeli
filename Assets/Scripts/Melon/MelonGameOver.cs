@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MelonGameOver : GameOver {
 
+    public GameObject hugeMelon;
+
     public override void UpdateGameOver()
     {
         if (!waitForAnimation)
@@ -25,12 +27,16 @@ public class MelonGameOver : GameOver {
         {
             ScorePlayer();
         }
-        Debug.Log("GameOver Update");
     }
 
     public override void ScorePlayer()
     {
-        
+        startScoring = false;
+        player.transform.position = scoringPosition;
+        Score score = GameController.Instance.play.score;
+
+        maxPoints = score.maxScore;
+        points = score.currentScore;
     }
 
     public override void AfterScene()

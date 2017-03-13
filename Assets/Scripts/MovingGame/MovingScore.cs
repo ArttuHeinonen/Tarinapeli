@@ -10,8 +10,6 @@ public class MovingScore : Score {
     public List<GameObject> pickups;
 
     public Text scoreText;
-    public int currentScore;
-    public int maxScore;
 
     public override string GetGradeText()
     {
