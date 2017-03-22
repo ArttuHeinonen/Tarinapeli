@@ -15,7 +15,8 @@ public class MelonGameOver : GameOver {
             {
                 if (GameController.Instance.IsDialogFinished())
                 {
-                    //Show end buttons
+                    endButtonsPanel.SetActive(true);
+                    endText.SetActive(true);
                 }
                 else
                 {
@@ -34,13 +35,15 @@ public class MelonGameOver : GameOver {
         startScoring = false;
         player.transform.position = scoringPosition;
         Score score = GameController.Instance.play.score;
-
         maxPoints = score.maxScore;
         points = score.currentScore;
+        AssignStars();
+        ShowStarsBasedOnScore();
     }
 
     public override void AfterScene()
     {
-        
+        hugeMelon.GetComponent<Animator>().SetTrigger("RollOver");
+        hugeMelon.GetComponent<Rotate>().isRotating = true;
     }
 }

@@ -142,10 +142,10 @@ public class MenuButtons : MonoBehaviour {
 
     void UpdateUIElements()
     {
-        startButtonText.text = sysLang.getString("startButton");
-        chooseStoryText.text = sysLang.getString("chooseStory");
-        chooseLangText.text = sysLang.getString("chooseLang");
-        creditsText.text = sysLang.getString("credits");
+        startButtonText.text = sysLang.GetString("startButton");
+        chooseStoryText.text = sysLang.GetString("chooseStory");
+        chooseLangText.text = sysLang.GetString("chooseLang");
+        creditsText.text = sysLang.GetString("credits");
     }
 
     public void StartScene(string scene)

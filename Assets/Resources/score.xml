@@ -1,44 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <languages>
-
 	<Finnish>
-		<string name="melonBadEnd">Näl-kä!</string>
-		<string name="melonGoodEnd">Nam!</string>
-		<string name="melonGreatEnd">Nam!!</string>
-		<string name="underwaterBadEnd">Auts</string>
-		<string name="underwaterGoodEnd">Ys-tä-vä</string>
-		<string name="spaceBadEnd">Uu-des-taan!</string>
-		<string name="spaceGoodEnd">On-nis-tuin</string>
+		<string name="Melon0">Näl-kä!</string>
+		<string name="melon1">Nam!</string>
+		<string name="melon2">Nam!</string>
+		<string name="melon3">Nam!!</string>
+		
+		<string name="Underwater0">Auts</string>
+		<string name="Underwater1">Ys-tä-vä</string>
+		<string name="Underwater2">Ys-tä-vä</string>
+		<string name="Underwater3">Ys-tä-vä</string>
+		
+		<string name="Space0">Uu-des-taan!</string>
+		<string name="Space1">On-nis-tuin</string>
+		<string name="Space2">On-nis-tuin</string>
+		<string name="Space3">On-nis-tuin</string>
 	</Finnish>
 
-	<English>
-		<string name="melonBadEnd">Hungry!</string>
-		<string name="melonGoodEnd">Yum!</string>
-		<string name="melonGreatEnd">Yummy!!</string>
-		<string name="underwaterBadEnd">Ouch</string>
-		<string name="underwaterGoodEnd">Friend</string>
-		<string name="spaceBadEnd">Again!</string>
-		<string name="spaceGoodEnd">I did it.</string>
+	<English>		
+		<string name="Melon0">Hungry!</string>
+		<string name="melon1">Yum!</string>
+		<string name="melon2">Yummy!</string>
+		<string name="melon3">Yummy!!</string>
+		
+		<string name="Underwater0">Ouch</string>
+		<string name="Underwater1">Friend</string>
+		<string name="Underwater2">Friend</string>
+		<string name="Underwater3">Friend</string>
+		
+		<string name="Space0">Again!</string>
+		<string name="Space1">I did it.</string>
+		<string name="Space2">I did it.</string>
+		<string name="Space3">I did it.</string>
 	</English>
 
-	<Swedish>
-		<string name="melonBadEnd">Hungrig!</string>
-		<string name="melonGoodEnd">Nam!</string>
-		<string name="melonGreatEnd">Nam!!</string>
-		<string name="underwaterBadEnd">Auts</string>
-		<string name="underwaterGoodEnd">Vän</string>
-		<string name="spaceBadEnd">Uu-des-taan!</string>
-		<string name="spaceGoodEnd">On-nis-tuin</string>
+	<Swedish>		
+		<string name="Melon0">Hungrig!</string>
+		<string name="melon1">Nam!</string>
+		<string name="melon2">Nam!</string>
+		<string name="melon3">Nam!!</string>
+		
+		<string name="Underwater0">Auts</string>
+		<string name="Underwater1">Vän</string>
+		<string name="Underwater2">Vän</string>
+		<string name="Underwater3">Vän</string>
+		
+		<string name="Space0">Uu-des-taan!</string>
+		<string name="Space1">On-nis-tuin</string>
+		<string name="Space2">On-nis-tuin</string>
+		<string name="Space3">On-nis-tuin</string>
 	</Swedish>
 
 	<German>
-		<string name="melonBadEnd">Hungrig!</string>
-		<string name="melonGoodEnd">Yum!</string>
-		<string name="melonGreatEnd">Yummy!!</string>
-		<string name="underwaterBadEnd">Ouch</string>
-		<string name="underwaterGoodEnd">Freund</string>
-		<string name="spaceBadEnd">Aufs Neue!</string>
-		<string name="spaceGoodEnd">Jag gjorde det</string>
+		<string name="Melon0">Hungrig!</string>
+		<string name="melon1">Yum!</string>
+		<string name="melon2">Yummy!</string>
+		<string name="melon3">Yummy!!</string>
+		
+		<string name="Underwater0">Ouch</string>
+		<string name="Underwater1">Freund</string>
+		<string name="Underwater2">Freund</string>
+		<string name="Underwater3">Freund</string>
+		
+		<string name="Space0">Aufs Neue!</string>
+		<string name="Space1">Jag gjorde det</string>
+		<string name="Space2">Jag gjorde det</string>
+		<string name="Space3">Jag gjorde det</string>
 	</German>
-	
 </languages>

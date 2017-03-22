@@ -137,7 +137,6 @@ public class GameController : MonoBehaviour
                 break;
             case GameState.gameover:
                 gameoverPanel.SetActive(true);
-                gameoverPanel.GetComponentInChildren<Text>().text = play.score.GetGradeText();
                 break;
             default:
                 break;

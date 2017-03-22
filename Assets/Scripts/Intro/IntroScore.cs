@@ -10,7 +10,12 @@ public class IntroScore : Score
         throw new NotImplementedException();
     }
 
-    public override string GetGradeText()
+    public override string GetGradeText(int stars, string sceneName)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override string GetScoreText()
     {
         throw new NotImplementedException();
     }

@@ -11,12 +11,18 @@ public class MovingScore : Score {
 
     public Text scoreText;
 
-    public override string GetGradeText()
+    public override string GetScoreText()
     {
         return scoreText.text;
     }
 
-    
+    public override string GetGradeText(int stars, string sceneName)
+    {
+        grade = "Error";
+        grade = LangController.Instance.GetScoreLang().GetString(sceneName + stars);
+        return grade;
+    }
+
     void Start () {
 		if(pickupParent != null)
         {
@@ -31,6 +37,19 @@ public class MovingScore : Score {
             UpdateScoreText();
         }
 	}
+
+    public void UpdateLanguage()
+    {
+        if (LangController.Instance.GetSysLang() != null)
+        {
+            string language = LangController.Instance.GetSysLangString();
+            LangController.Instance.InitSceneLang("score", language);
+        }
+        else
+        {
+            LangController.Instance.InitSceneLang("score", "English");
+        }
+    }
 
     public override void UpdateScoreText()
     {

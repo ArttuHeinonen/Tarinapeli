@@ -72,6 +72,10 @@ public class MovingPlayer : Player
             ReduceSpeed(parent.gameObject.GetComponent<Pickup>().speedReductionPercent, parent.gameObject.GetComponent<Pickup>().reductionTimeSeconds);
             Destroy(parent.gameObject);
         }
+        else if(other.tag == "Event")
+        {
+            //animate player to be smaller
+        }
         
     }
 }

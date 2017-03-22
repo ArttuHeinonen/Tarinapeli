@@ -59,24 +59,23 @@ public class Lang
         }
     }
 
-    public string getString(string name)
+    public string GetString(string name)
     {
         if (!Strings.ContainsKey(name))
         {
             Debug.LogError("The specified string does not exist: " + name);
             return "";
         }
-
         return (string)Strings[name];
     }
 
 
-    public string getLanguage()
+    public string GetLanguage()
     {
         return this.currentLanguage;
     }
 
-    public List<string> getAllStrings()
+    public List<string> GetAllStrings()
     {
         return StringList;
     }
@@ -87,6 +86,7 @@ public class LangController : MonoBehaviour {
     public static LangController Instance = null;
     private Lang sysLang;
     private Lang sceneLang;
+    private Lang scoreLang;
 
     void Start()
     {
@@ -109,12 +109,17 @@ public class LangController : MonoBehaviour {
 
     public void InitSystemLang(string lang)
     {
-        sysLang = new Lang((TextAsset)Resources.Load("system"), lang);
+        sysLang = new Lang((TextAsset)Resources.Load("System"), lang);
     }
 
     public void InitSceneLang(string fileName, string lang)
     {
         sceneLang = new Lang((TextAsset)Resources.Load(fileName), lang);
+    }
+
+    public void InitScoreLang(string lang)
+    {
+        scoreLang = new Lang((TextAsset)Resources.Load("Score"), lang);
     }
 
     public Lang GetSysLang()
@@ -124,7 +129,7 @@ public class LangController : MonoBehaviour {
 
     public string GetSysLangString()
     {
-        return this.sysLang.getLanguage();
+        return this.sysLang.GetLanguage();
     }
 
     public void SetSysLang(Lang setterLang)
@@ -137,4 +142,8 @@ public class LangController : MonoBehaviour {
         return this.sceneLang;
     }
 
+    public Lang GetScoreLang()
+    {
+        return this.scoreLang;
+    }
 }

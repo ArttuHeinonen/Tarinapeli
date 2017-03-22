@@ -110,7 +110,7 @@ public class DialogueController : MonoBehaviour {
 
     void FillDialogs()
     {
-        foreach (string line in sceneText.getAllStrings())
+        foreach (string line in sceneText.GetAllStrings())
         {
             dialogs.Add(line);
         }

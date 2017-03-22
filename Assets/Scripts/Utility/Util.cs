@@ -32,6 +32,4 @@ public static class Util {
         }
         go.transform.localScale = end;
     }
-
-
 }
